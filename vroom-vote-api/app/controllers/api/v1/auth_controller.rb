@@ -1,13 +1,11 @@
 class Api::V1::AuthController < ApplicationController
-  def show
-    render json: current_user
-  end
+  skip_before_action :authorized, only: [:create]
 
   def create
     # check for user with this email
-    user = User.find_by(email: params[:email])
+    @user = User.find_by(email: user_login_params[:email])
     # if it exists, make sure password matches
-    if user.present? && user.authenticate(params[:password])
+    if @user && user.authenticate(params[:password])
       # if password matches, render back a json response of user info
       created_jwt = issue_token({id: user.id})
       render json: {user: user, jwt: created_jwt}
@@ -28,6 +26,7 @@ class Api::V1::AuthController < ApplicationController
       render json: {errors: user.errors.full_messages}, status: 422
     end
   end
+
 
   private
 
