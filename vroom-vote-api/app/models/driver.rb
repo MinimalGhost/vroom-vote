@@ -1,4 +1,4 @@
 class Driver < ApplicationRecord
   belongs_to :user
-  has_many :riders, through: :car
+  has_many :riders
 end
