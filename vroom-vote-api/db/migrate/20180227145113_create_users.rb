@@ -3,12 +3,12 @@ class CreateUsers < ActiveRecord::Migration[5.1]
     create_table :users do |t|
       t.string :username
       t.string :email
-      t.string :first_name
-      t.string :last_name
       t.string :address
       t.string :district
-      t.string :state
+      t.string :_state
+      t.boolean :is_driver
       t.string :password_digest
+      t.references :driver, index: true
 
       t.timestamps
     end

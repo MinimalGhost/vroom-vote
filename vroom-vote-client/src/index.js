@@ -1,5 +1,5 @@
 import React from 'react';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+// import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 // import thunk from 'redux-thunk'
 import ReactDOM from 'react-dom';

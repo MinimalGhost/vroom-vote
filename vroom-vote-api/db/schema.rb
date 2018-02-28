@@ -18,14 +18,15 @@ ActiveRecord::Schema.define(version: 20180227145113) do
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
-    t.string "first_name"
-    t.string "last_name"
     t.string "address"
     t.string "district"
-    t.string "state"
+    t.string "_state"
+    t.boolean "is_driver"
     t.string "password_digest"
+    t.bigint "driver_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["driver_id"], name: "index_users_on_driver_id"
   end
 
 end
