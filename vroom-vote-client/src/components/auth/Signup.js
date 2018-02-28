@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { signupUser } from '../../actions/user'
 import { Link } from 'react-router-dom'
 
 class Signup extends React.Component {
@@ -11,12 +13,12 @@ class Signup extends React.Component {
 
   handleInputChange = (e) => {
     this.setState({
-      [e.target.name]: e.target.value;
+      [e.target.name]: e.target.value
     })
   }
 
   handleSubmit = (e) => {
-    event.preventDefault();
+    e.preventDefault();
     this.props.signupUser(this.state.email, this.state.password)
   }
 
@@ -40,4 +42,4 @@ class Signup extends React.Component {
   }
 }
 
-export default Signup
+export default connect(null, { signupUser })(Signup)

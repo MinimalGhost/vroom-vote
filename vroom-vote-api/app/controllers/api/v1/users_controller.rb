@@ -1,4 +1,18 @@
 class Api::V1::UsersController < ApplicationController
+  skip_before_action :authorized, only [:index]
+
+  def index
+    @users = User.all
+    render json: @users, status: 200
+  end
+
+  def profile
+    if current_user
+      render json: current_user, status: 200
+    else
+      render json: { message: "User not found" }, status: 404
+    end
+  end
 
   def show
     user = User.find(params[:id])
