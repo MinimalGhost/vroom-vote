@@ -23,10 +23,8 @@ ActiveRecord::Schema.define(version: 20180227145113) do
     t.string "_state"
     t.boolean "is_driver"
     t.string "password_digest"
-    t.bigint "driver_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["driver_id"], name: "index_users_on_driver_id"
   end
 
 end
