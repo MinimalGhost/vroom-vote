@@ -16,7 +16,14 @@ class Profile extends React.Component {
           </div>
         :
           <div>
-            <p>Welcome, {this.props.auth.user.username}</p>
+            <h3>Welcome, {this.props.auth.user.username}</h3>
+            {
+              this.props.auth.user.is_driver ?
+              <p>Your profile is set to Driver</p>
+              :
+              <p>Your profile is set to Rider</p>
+            }
+            <p>City: {this.props.auth.user.locale}</p>
           </div>
         }
       </div>
