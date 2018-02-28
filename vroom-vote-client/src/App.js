@@ -1,29 +1,62 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
-import { Route, Switch, Redirect, NavLink, Link } from 'react-router-dom'
+import { Route, Switch, withRouter, Link } from 'react-router-dom'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import { logIn, logOut } from './actions'
 import './App.css';
-import Auth from './AuthAdapter'
-import Login from './components/auth/Login'
-import Signup from './components/auth/Signup'
+import AuthAdapter from './adapters/AuthAdapter'
+import Login from './components/Login'
+import SignUp from './components/SignUp'
 import Profile from './components/Profile'
 
 class App extends Component {
-  state = {
-    user: '',
-    userIsLoggedIn: false
+
+  componentWillMount() {
+  if (localStorage.getItem('jwt')) {
+    AuthAdapter.current_user()
+      .then(user => {
+        if (!user.error) {
+          this.props.logIn(user)
+        }
+      })
+    }
+  }
+
+  logout = () => {
+    localStorage.removeItem('jwt')
+    this.props.logOut()
   }
 
   render() {
     return (
       <div className="App">
-        <NavLink to="/login">Login</NavLink>
-        <NavLink to="/profile">Profile</NavLink>
-        <Route exact path='/profile' component={Profile} />
-        <Route exact path='/login' component={Login} />
-        <Route exact path='/signup' component={Signup} />
+        {this.props.auth.isLoggedIn ? <button onClick={this.logout}>Logout</button> : null }
+        <Link to="/profile">Profile</Link>
+        <Switch>
+          <Route exact path='/login' component={Login} />
+          <Route exact path='/signup' component={SignUp} />
+          <Route path="*" component={Profile} />
+        </Switch>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    auth: {
+      isLoggedIn: state.auth.isLoggedIn,
+      user: state.auth.user
+    }
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    logIn: logIn,
+    logOut: logOut
+  }, dispatch)
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

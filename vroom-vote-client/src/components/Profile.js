@@ -7,6 +7,6 @@ const Profile = (props) => {
   )
 }
 
-const mapStateToProps = (state) => ({ username: state.userReducer.username })
+const mapStateToProps = (state) => ({ username: state.auth.username })
 
 export default connect(mapStateToProps)(Profile)
