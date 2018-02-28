@@ -6,6 +6,7 @@ class SignUp extends React.Component {
   state = {
     username: '',
     address: '',
+    locale: '',
     _state: 'AL',
     is_driver: true,
     password: '',
@@ -44,11 +45,18 @@ class SignUp extends React.Component {
           <label>Username: </label><br />
           <input
             type="text"
-            name="username" onChange={this.handleInputChange} value={this.state.username} /><br />
+            name="username" onChange={this.handleInputChange} value={this.state.username} />
+            <br />
             <label>Address: </label><br />
             <input
               type="text"
               name="address" onChange={this.handleInputChange} value={this.state.address}
+            />
+            <br />
+            <label>City/Town: </label><br />
+            <input
+              type="text"
+              name="locale" onChange={this.handleInputChange} value={this.state.locale}
             />
             <br />
             <label>state: </label><br />
