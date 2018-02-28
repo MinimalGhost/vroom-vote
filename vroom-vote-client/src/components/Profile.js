@@ -16,7 +16,7 @@ class Profile extends React.Component {
           </div>
         :
           <div>
-            <p>Welcome, {this.props.auth.username}</p>
+            <p>Welcome, {this.props.auth.user.username}</p>
           </div>
         }
       </div>
