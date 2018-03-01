@@ -3,7 +3,7 @@ import DriverItem from './DriverItem'
 import { connect } from 'react-redux'
 
 const DriverList = (props) => {
-    let districtDrivers = props.drivers.map(driver => <DriverItem {...driver} />
+    let districtDrivers = props.drivers.map(driver => <DriverItem key={driver.id} {...driver} />
 )
     return (
       <div>
