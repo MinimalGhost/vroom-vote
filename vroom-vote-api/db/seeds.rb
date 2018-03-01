@@ -6,6 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-jamesDriver = User.create(username: 'james_d', email: 'jd@yahoo.com', first_name: 'james', last_name: 'allis', address: '210 west elm', district: '23', state: 'CA', is_driver: true)
+jamesDriver = User.create(username: 'james_d', email: 'jd@yahoo.com', first_name: 'james', last_name: 'allis', address: '210 west elm', district: nil, state: 'CA', is_driver: true)
 
-felixRider = User.create(username: 'felix_s', email: 'fs@hotmail.com', first_name: 'felix', last_name: 'sater', address: '210 west elm', district: '23', state: 'CA', is_driver: false, driver_id: 1)
+felixRider = User.create(username: 'felix_s', email: 'fs@hotmail.com', first_name: 'felix', last_name: 'sater', address: '210 west elm', district: nil, state: 'CA', is_driver: false, driver_id: 1)

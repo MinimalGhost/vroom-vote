@@ -1,6 +1,11 @@
 require 'uri'
 
 class Api::V1::UsersController < ApplicationController
+
+  def index
+    district_drivers = User.where(is_driver == true && district == current_user.district)
+  end
+
   def create
     user = User.new(user_params)
     #concat whitespace with %20

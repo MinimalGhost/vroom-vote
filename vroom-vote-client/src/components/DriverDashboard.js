@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Redirect } from 'react-router'
+// import { Redirect } from 'react-router'
 import { connect } from 'react-redux'
 
-class Profile extends React.Component {
+class DriverDashboard extends React.Component {
 
   render() {
     return (
@@ -16,15 +16,11 @@ class Profile extends React.Component {
           </div>
         :
           <div>
-            // <h3>Welcome, {this.props.auth.user.username}</h3>
-            {
-              this.props.auth.user.is_driver ?
-              // redirect to driver homepage
-              <Redirect to="/driverdash" />
-              :
-              // redirect to list of drivers in district
-              <Redirect to="/riderdash" />
-            }
+            <h3>Welcome, Driver {this.props.auth.user.username}</h3>
+            <p>Address: {this.props.auth.user.address}</p>
+            <p>City/Town: {this.props.auth.user.locale}</p>
+            <p>State: {this.props.auth.user._state}</p>
+            <p>District: {this.props.auth.user.district}</p>
           </div>
         }
       </div>
@@ -42,4 +38,4 @@ const mapStateToProps = (state) => {
  }
 }
 
-export default connect(mapStateToProps)(Profile)
+export default connect(mapStateToProps)(DriverDashboard)

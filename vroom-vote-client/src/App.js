@@ -9,6 +9,8 @@ import AuthAdapter from './adapters/AuthAdapter'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
 import Profile from './components/Profile'
+import RiderDashboard from './components/RiderDashboard'
+import DriverDashboard from './components/DriverDashboard'
 
 class App extends Component {
 
@@ -36,6 +38,8 @@ class App extends Component {
         <Switch>
           <Route exact path='/login' component={Login} />
           <Route exact path='/signup' component={SignUp} />
+          <Route exact path='/riderdash' component={RiderDashboard} />
+          <Route exact path='/driverdash' component={DriverDashboard} />
           <Route path="*" component={Profile} />
         </Switch>
       </div>
