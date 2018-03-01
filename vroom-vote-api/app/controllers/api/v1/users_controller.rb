@@ -9,19 +9,8 @@ class Api::V1::UsersController < ApplicationController
     response = RestClient.get("https://www.googleapis.com/civicinfo/v2/representatives?key=#{ENV['API_KEY']}&address=#{userAddress}#{userLocale}#{user_params[:_state]}")
 
     civicData = JSON.parse(response)
-
-    # gameContent['results'].each do |obj|
-    #   triviaRound = Content.new(
-    #     question: obj['question'],
-    #     correct: obj['correct_answer'],
-    #     incorrect: obj['incorrect_answers'].join('^'))
-    #     if triviaRound.save
-    #       puts('successfully saved')
-    #     else
-    #       puts('nope')
-    #       render json: {errors: triviaRound.errors.full_messages}, status: 422
-    #     end
-    # end
+    obj = civicData['divisions'].values[2]
+    user.district = obj.values[0]
 
     if user.save
       render json: user
