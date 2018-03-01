@@ -1,4 +1,5 @@
 import React from 'react'
+import DriverList from './DriverList'
 import { Link } from 'react-router-dom'
 // import { Redirect } from 'react-router'
 import DistrictAdapter from '../adapters/DistrictAdapter'
@@ -19,7 +20,8 @@ class RiderDashboard extends React.Component {
   render() {
     return (
       <div>
-        { !this.props.auth.isLoggedIn ?
+        {
+          !this.props.auth.isLoggedIn ?
           <div>
             <div>Home</div>
             <Link to="/login">Login</Link>
@@ -32,6 +34,7 @@ class RiderDashboard extends React.Component {
             <p>City/Town: {this.props.auth.user.locale}</p>
             <p>State: {this.props.auth.user._state}</p>
             <p>District: {this.props.auth.user.district}</p>
+            <DriverList />
           </div>
         }
       </div>
@@ -46,7 +49,9 @@ const mapStateToProps = (state) => {
      isLoggedIn: state.auth.isLoggedIn,
      user: state.auth.user
    },
-   drivers: state.drivers.drivers
+   driversReducer: {
+     drivers: state.driversReducer.drivers
+   }
  }
 }
 

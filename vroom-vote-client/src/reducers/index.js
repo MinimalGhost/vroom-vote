@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
 import auth from './auth'
-import drivers from './drivers'
+import driversReducer from './driversReducer'
 
 export default combineReducers({
   auth,
-  drivers
+  driversReducer
 })

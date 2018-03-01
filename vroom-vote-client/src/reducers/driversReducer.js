@@ -1,5 +1,5 @@
 export default (state = {
-  drivers: null
+  drivers: []
 }, action) => {
   switch (action.type) {
     case 'ADD_DISTRICT_DRIVERS':
