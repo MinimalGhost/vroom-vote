@@ -1,7 +1,7 @@
 import React from 'react'
 import AuthAdapter from '../adapters/AuthAdapter'
 import { Redirect } from 'react-router'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { logIn, logOut } from '../actions'
@@ -28,6 +28,7 @@ class Login extends React.Component {
       if(!user.error) {
         this.props.logIn(user)
         localStorage.setItem('jwt', user.jwt)
+        this.props.history.push('/profile')
       }
     })
   }
@@ -60,7 +61,7 @@ class Login extends React.Component {
             </form>
           </div>
         :
-          <Redirect to="/profile"/>
+          null
         }
       </div>
     )
@@ -83,4 +84,4 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login))

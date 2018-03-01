@@ -4,7 +4,7 @@ Rails.application.routes.draw do
       resources :users
       post "/auth", to: "auth#create"
       get "current_user", to: "auth#show"
-      get "drivers", to: "users#index"
+      get "/drivers", to: "users#index"
     end
   end
 end

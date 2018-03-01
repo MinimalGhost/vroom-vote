@@ -4,7 +4,7 @@ export default (state = [{
 }], action) => {
   switch(action.type) {
     case 'LOG_IN':
-      return {isLoggedIn: true, user: action.user}
+      return {isLoggedIn: true, ...action.user}
     case 'LOG_OUT':
       return {isLoggedIn: false, user: {}}
     default:

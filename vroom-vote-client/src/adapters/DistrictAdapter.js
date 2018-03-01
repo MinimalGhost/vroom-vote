@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3001'
+const baseUrl = 'http://localhost:3000/api/v1'
 
 class DistrictAdapter {
 
@@ -14,7 +14,8 @@ class DistrictAdapter {
 function headers () {
   return {
     'content-type': 'application/json',
-    'accept': 'application/json'
+    'accept': 'application/json',
+    'Authorization': localStorage.getItem('jwt')
   }
 }
 
