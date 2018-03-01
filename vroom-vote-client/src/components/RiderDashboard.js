@@ -1,9 +1,20 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 // import { Redirect } from 'react-router'
+import DistrictAdapter from '../adapters/DistrictAdapter'
+import { getDistrictDrivers } from '../actions'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
+
 class RiderDashboard extends React.Component {
+
+  componentWillMount = () => {
+    if(this.props.auth.user) {
+      DistrictAdapter.getDistrictDrivers()
+      .then(this.props.getDistrictDrivers)
+    }
+  }
 
   render() {
     return (
@@ -34,8 +45,15 @@ const mapStateToProps = (state) => {
    auth: {
      isLoggedIn: state.auth.isLoggedIn,
      user: state.auth.user
-   }
+   },
+   drivers: state.drivers.drivers
  }
 }
 
-export default connect(mapStateToProps)(RiderDashboard)
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    getDistrictDrivers: getDistrictDrivers
+  }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RiderDashboard)

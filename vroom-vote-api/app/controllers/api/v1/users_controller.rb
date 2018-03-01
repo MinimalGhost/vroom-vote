@@ -3,7 +3,8 @@ require 'uri'
 class Api::V1::UsersController < ApplicationController
 
   def index
-    district_drivers = User.where(is_driver == true && district == current_user.district)
+    districtDrivers = User.where(district: current_user.district)
+    render json: districtDrivers
   end
 
   def create

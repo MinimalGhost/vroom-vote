@@ -16,7 +16,6 @@ class Profile extends React.Component {
           </div>
         :
           <div>
-            // <h3>Welcome, {this.props.auth.user.username}</h3>
             {
               this.props.auth.user.is_driver ?
               // redirect to driver homepage
