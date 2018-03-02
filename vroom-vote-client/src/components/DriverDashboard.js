@@ -21,6 +21,7 @@ class DriverDashboard extends React.Component {
             <p>City/Town: {this.props.auth.user.locale}</p>
             <p>State: {this.props.auth.user._state}</p>
             <p>District: {this.props.auth.user.district}</p>
+            <p>Open Seats: 0/{this.props.auth.user.seats}</p>
           </div>
         }
       </div>

@@ -1,6 +1,5 @@
 import React from 'react'
 import UserAdapter from '../adapters/UserAdapter'
-import AuthAdapter from '../adapters/AuthAdapter'
 import { Link, withRouter } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -13,6 +12,7 @@ class SignUp extends React.Component {
     locale: '',
     _state: 'AL',
     is_driver: true,
+    seats: '',
     password: '',
     password_confirmation: ''
   }
@@ -134,6 +134,19 @@ class SignUp extends React.Component {
                   <option value='rider'>Rider</option>
                 </select>
                 <br />
+              {this.state.is_driver === true ?
+                <div>
+                  <label>Seats: </label><br />
+                  <input
+                    type="number"
+                    name="seats"
+                    onChange={this.handleInputChange}
+                    value={this.state.seats}
+                  />
+                </div>
+                :
+                  null
+              }
               <label>Password: </label><br />
               <input
                 type="password"

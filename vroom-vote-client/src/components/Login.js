@@ -1,6 +1,5 @@
 import React from 'react'
 import AuthAdapter from '../adapters/AuthAdapter'
-import { Redirect } from 'react-router'
 import { Link, withRouter } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'

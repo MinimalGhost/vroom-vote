@@ -3,7 +3,7 @@ import DriverList from './DriverList'
 import { Link } from 'react-router-dom'
 // import { Redirect } from 'react-router'
 import DistrictAdapter from '../adapters/DistrictAdapter'
-import { getDistrictDrivers } from '../actions'
+import { getDistrictDrivers, getMyRide } from '../actions'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
@@ -15,6 +15,11 @@ class RiderDashboard extends React.Component {
       DistrictAdapter.getDistrictDrivers()
       .then(this.props.getDistrictDrivers)
     }
+  }
+
+  selectDriver = (e, driver) => {
+    DistrictAdapter.createRide(driver.id)
+    .then(this.props.getMyRide)
   }
 
   render() {
@@ -34,14 +39,18 @@ class RiderDashboard extends React.Component {
             <p>City/Town: {this.props.auth.user.locale}</p>
             <p>State: {this.props.auth.user._state}</p>
             <p>District: {this.props.auth.user.district}</p>
-            <DriverList />
+            {
+              this.props.auth.user.riders ?
+              <p>You are riding with someone</p>
+              :
+              <DriverList selectDriver={this.selectDriver}/>
+            }
           </div>
         }
       </div>
     )
   }
 }
-
 
 const mapStateToProps = (state) => {
  return {
@@ -57,7 +66,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    getDistrictDrivers: getDistrictDrivers
+    getDistrictDrivers: getDistrictDrivers,
+    getMyRide: getMyRide
   }, dispatch)
 }
 

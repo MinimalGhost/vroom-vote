@@ -9,6 +9,13 @@ class DistrictAdapter {
     }).then(res => res.json())
   }
 
+  static createRide(rider_id) {
+    return fetch(`${baseUrl}/rides`, {
+      method: 'POST',
+      headers: headers(),
+      body: JSON.stringify(rider_id)
+    })
+  }
 }
 
 function headers () {
