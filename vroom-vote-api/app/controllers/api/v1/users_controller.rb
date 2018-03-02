@@ -19,7 +19,13 @@ class Api::V1::UsersController < ApplicationController
     user.district = obj.values[0]
 
     if user.save
-      render json: user
+      # trying to implement seamless login after user creation
+      user = User.find_by(username: params[:username])
+      if user.present? && user.authenticate(params[:password])
+        created_jwt = issue_token({id: user.id})
+        render json: {user: user, jwt: created_jwt}
+      end
+      # render json: user
     else
       render json: {error: user.errors.first}
     end
