@@ -1,12 +1,12 @@
 export default (state = {
   drivers: [],
-  ride: null
+  carpools: []
 }, action) => {
   switch (action.type) {
-    case 'ADD_DISTRICT_DRIVERS':
+    case 'GET_DISTRICT_DRIVERS':
       return { ...state, drivers: action.drivers }
-    case 'ADD_MY_RIDE':
-      return { ...state, ride: action.ride }
+    case 'UPDATE_CARPOOL':
+      return { ...state, carpools: action.carpools }
     default:
       return state
   }

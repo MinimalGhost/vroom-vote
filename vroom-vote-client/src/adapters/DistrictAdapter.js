@@ -9,11 +9,11 @@ class DistrictAdapter {
     }).then(res => res.json())
   }
 
-  static createRide(rider_id) {
-    return fetch(`${baseUrl}/rides`, {
+  static joinCarpool(driver_id) {
+    return fetch(`${baseUrl}/ride`, {
       method: 'POST',
       headers: headers(),
-      body: JSON.stringify(rider_id)
+      body: JSON.stringify(driver_id)
     })
   }
 }

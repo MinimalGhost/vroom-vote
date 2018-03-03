@@ -7,9 +7,9 @@ export function logOut() {
 }
 
 export function getDistrictDrivers(drivers) {
-  return { type: 'ADD_DISTRICT_DRIVERS', drivers: drivers }
+  return { type: 'GET_DISTRICT_DRIVERS', drivers: drivers }
 }
 
-export function getMyRide(ride) {
-  return { type: 'ADD_MY_RIDE', ride: ride }
+export function updateCarpool(carpools) {
+  return { type: 'UPDATE_CARPOOL', carpools: carpools }
 }
