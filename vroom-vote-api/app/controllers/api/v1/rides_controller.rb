@@ -1,4 +1,4 @@
-class RidesController < ApplicationController
+class Api::V1::RidesController < ApplicationController
   def create
     if params.include?(:rider_id)
       new_rides = Ride.create_ride_for_ids(current_user.id, params[:rider_id])
