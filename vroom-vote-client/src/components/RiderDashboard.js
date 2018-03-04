@@ -12,6 +12,8 @@ class RiderDashboard extends React.Component {
 
   componentWillMount = () => {
     if(this.props.auth.user) {
+
+      
       DistrictAdapter.getDistrictDrivers()
       .then(this.props.getDistrictDrivers)
     }
