@@ -5,6 +5,7 @@ class Api::V1::UsersController < ApplicationController
   def index
     districtDrivers = User.where(district: current_user.district, is_driver: true)
     render json: districtDrivers
+    # otherwise send back drivers in district
   end
 
   def create

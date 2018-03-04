@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       post "/ride", to: "carpool_riders#create"
       get "/current_user", to: "auth#show"
       get "/drivers", to: "users#index"
+      get "/driver", to: "carpool_riders#show"
     end
   end
 end
