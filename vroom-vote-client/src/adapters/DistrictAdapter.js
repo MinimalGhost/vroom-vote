@@ -9,6 +9,13 @@ class DistrictAdapter {
     }).then(res => res.json())
   }
 
+  static getMyDriver() {
+    return fetch(`${baseUrl}/driver`, {
+      method: 'GET',
+      headers: headers()
+    }).then(res => res.json())
+  }
+
   static joinCarpool(driver_id) {
     return fetch(`${baseUrl}/ride`, {
       method: 'POST',

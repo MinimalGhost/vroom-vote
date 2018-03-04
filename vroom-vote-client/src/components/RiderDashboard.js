@@ -3,7 +3,7 @@ import DriverList from './DriverList'
 import { Link } from 'react-router-dom'
 // import { Redirect } from 'react-router'
 import DistrictAdapter from '../adapters/DistrictAdapter'
-import { getDistrictDrivers, updateCarpool } from '../actions'
+import { getDistrictDrivers, setMyDriver } from '../actions'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
@@ -12,25 +12,31 @@ class RiderDashboard extends React.Component {
 
   componentWillMount = () => {
     if(this.props.auth.user) {
+      let haveDriver = DistrictAdapter.getMyDriver()
+      .then(this.props.setMyDriver)
 
-      
-      DistrictAdapter.getDistrictDrivers()
-      .then(this.props.getDistrictDrivers)
+      if (!haveDriver) {
+        DistrictAdapter.getRiderData()
+        .then(this.props.getDistrictDrivers)
+      }
     }
   }
 
+
+
   selectDriver = (e, driver) => {
+    console.log(driver.id);
     DistrictAdapter.joinCarpool(driver.id)
-    .then(this.props.updateCarpool)
+    .then(this.props.setMyDriver)
   }
 
   render() {
+
     return (
       <div>
         {
           !this.props.auth.isLoggedIn ?
           <div>
-            <div>Home</div>
             <Link to="/login">Login</Link>
             <Link to="/signup">Sign Up</Link>
           </div>
@@ -42,8 +48,8 @@ class RiderDashboard extends React.Component {
             <p>State: {this.props.auth.user._state}</p>
             <p>District: {this.props.auth.user.district}</p>
             {
-              this.props.auth.user.riders ?
-              <p>You are riding with someone</p>
+              this.props.driversReducer.myDriver ?
+              <p>You are riding with {this.props.driversReducer.myDriver.username}</p>
               :
               <DriverList selectDriver={this.selectDriver}/>
             }
@@ -61,7 +67,8 @@ const mapStateToProps = (state) => {
      user: state.auth.user
    },
    driversReducer: {
-     drivers: state.driversReducer.drivers
+     drivers: state.driversReducer.drivers,
+     myDriver: state.driversReducer.myDriver
    }
  }
 }
@@ -69,7 +76,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     getDistrictDrivers: getDistrictDrivers,
-    updateCarpool: updateCarpool
+    setMyDriver: setMyDriver
   }, dispatch)
 }
 

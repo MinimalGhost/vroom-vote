@@ -10,6 +10,6 @@ export function getDistrictDrivers(drivers) {
   return { type: 'GET_DISTRICT_DRIVERS', drivers: drivers }
 }
 
-export function updateCarpool(carpools) {
-  return { type: 'UPDATE_CARPOOL', carpools: carpools }
+export function setMyDriver(myDriver) {
+  return { type: 'SET_MY_DRIVER', myDriver: myDriver }
 }
