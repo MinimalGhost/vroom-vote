@@ -41,7 +41,7 @@ class RiderDashboard extends React.Component {
             <p>State: {this.props.auth.user._state}</p>
             <p>District: {this.props.auth.user.district}</p>
             {
-              this.props.carpoolsReducer.riderCarpool ?
+              !this.props.carpoolsReducer.riderCarpool == null ?
               <p>You are riding with {this.props.carpoolsReducer.riderCarpool.driver.username}</p>
               :
               <DriverList selectDriver={this.selectDriver}/>
