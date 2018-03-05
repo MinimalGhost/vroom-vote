@@ -4,9 +4,13 @@ class Api::V1::CarpoolRidersController < ApplicationController
     # check if user is already in a carpool
     rider = CarpoolRider.find_by_rider_id(current_user.id)
 
+    # If current user is in a carpool get their rider id
+    # and get the associated carpool data
+
+    carpool = Carpool.find_by(id: rider.carpool_id)
     # if they are already part of a carpool get that carpool info and return it
     if rider
-      render json: rider.carpool.driver
+      render json: carpool
     end
   end
 

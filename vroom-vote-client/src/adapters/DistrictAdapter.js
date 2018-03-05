@@ -9,7 +9,7 @@ class DistrictAdapter {
     }).then(res => res.json())
   }
 
-  static getMyDriver() {
+  static getMyCarpool() {
     return fetch(`${baseUrl}/driver`, {
       method: 'GET',
       headers: headers()

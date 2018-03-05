@@ -10,16 +10,11 @@ import { connect } from 'react-redux'
 
 class RiderDashboard extends React.Component {
 
-  componentWillMount = () => {
-    // if(this.props.auth.user) {
-    //   let haveDriver = DistrictAdapter.getMyDriver()
-    //   .then(this.props.setMyDriver)
-    //
-    //   if (!haveDriver) {
-    //     DistrictAdapter.getRiderData()
-    //     .then(this.props.getDistrictDrivers)
-    //   }
-    // }
+  componentDidMount = () => {
+    if(this.props.auth.user) {
+      DistrictAdapter.getMyCarpool()
+      .then(this.props.getRiderCarpool)
+    }
   }
 
   selectDriver = (e, driver) => {
@@ -47,7 +42,7 @@ class RiderDashboard extends React.Component {
             <p>District: {this.props.auth.user.district}</p>
             {
               this.props.carpoolsReducer.riderCarpool ?
-              <p>You are riding with {this.props.carpoolsReducer.riderCarpool.driver}</p>
+              <p>You are riding with {this.props.carpoolsReducer.riderCarpool.driver.username}</p>
               :
               <DriverList selectDriver={this.selectDriver}/>
             }
