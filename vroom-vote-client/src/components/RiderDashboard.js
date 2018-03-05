@@ -2,7 +2,7 @@ import React from 'react'
 import DriverList from './DriverList'
 import { Link } from 'react-router-dom'
 // import { Redirect } from 'react-router'
-import DistrictAdapter from '../adapters/DistrictAdapter'
+import CarpoolAdapter from '../adapters/CarpoolAdapter'
 import { getRiderCarpool } from '../actions'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -10,16 +10,9 @@ import { connect } from 'react-redux'
 
 class RiderDashboard extends React.Component {
 
-  componentDidMount = () => {
-    if(this.props.auth.user) {
-      DistrictAdapter.getMyCarpool()
-      .then(this.props.getRiderCarpool)
-    }
-  }
-
   selectDriver = (e, driver) => {
     console.log(driver.id);
-    DistrictAdapter.joinCarpool(driver.id)
+    CarpoolAdapter.joinCarpool(driver.id)
     .then(this.props.getRiderCarpool)
   }
 
@@ -54,7 +47,6 @@ class RiderDashboard extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
  return {
    auth: {
      isLoggedIn: state.auth.isLoggedIn,

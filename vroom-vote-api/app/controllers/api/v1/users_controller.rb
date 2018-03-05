@@ -33,7 +33,11 @@ class Api::V1::UsersController < ApplicationController
       user = User.find_by(username: params[:username])
       if user.present? && user.authenticate(params[:password])
         created_jwt = issue_token({id: user.id})
-        render json: { user: user, jwt: created_jwt, drivers: drivers }
+        render json: {
+          user: UserSerializer.new(user),
+          jwt: created_jwt,
+          drivers: drivers
+        }
       end
     else
       render json: {error: user.errors.first}

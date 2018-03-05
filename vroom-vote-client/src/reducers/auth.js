@@ -1,6 +1,8 @@
 export default (state = {
   isLoggedIn: false,
-  user: {}
+  user: {
+    is_driver: null
+  }
 }, action) => {
   switch(action.type) {
     case 'LOG_IN':

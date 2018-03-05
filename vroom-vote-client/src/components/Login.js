@@ -25,10 +25,10 @@ class Login extends React.Component {
       password: this.state.password
     }).then(user  => {
       if(!user.error) {
-        this.props.logIn(user)
+        this.props.logIn(user.user)
         localStorage.setItem('jwt', user.jwt)
-        this.props.getDistrictDrivers(user.drivers)
-        this.props.getRiderCarpool(user.carpool)
+        // this.props.getDistrictDrivers(user.drivers)
+        // this.props.getRiderCarpool(user.carpool)
         this.props.history.push('/profile')
       }
     })

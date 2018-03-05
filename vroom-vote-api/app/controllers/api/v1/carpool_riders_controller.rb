@@ -2,6 +2,7 @@ class Api::V1::CarpoolRidersController < ApplicationController
 
   def show
     # check if user is already in a carpool
+
     rider = CarpoolRider.find_by_rider_id(current_user.id)
 
     # If current user is in a carpool get their rider id

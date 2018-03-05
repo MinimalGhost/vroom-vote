@@ -13,3 +13,7 @@ export function getDistrictDrivers(drivers) {
 export function getRiderCarpool(riderCarpool) {
   return { type: 'GET_RIDER_CARPOOL', riderCarpool: riderCarpool }
 }
+
+export function getDriverCarpool(driverCarpool) {
+  return { type: 'GET_DRIVER_CARPOOL', driverCarpool: driverCarpool }
+}

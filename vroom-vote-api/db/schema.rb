@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20180303163254) do
 
   create_table "carpool_riders", force: :cascade do |t|
     t.integer "carpool_id"
-    t.integer "rider_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

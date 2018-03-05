@@ -1,10 +1,20 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 // import { Redirect } from 'react-router'
+import CarpoolAdapter from '../adapters/CarpoolAdapter'
+import { getDriverCarpool } from '../actions'
+import { bindActionCreators } from 'redux'
 import RiderList from './RiderList'
 import { connect } from 'react-redux'
 
 class DriverDashboard extends React.Component {
+
+  componentDidMount = () => {
+    if(this.props.auth.user) {
+      CarpoolAdapter.getMyCarpool()
+      .then(this.props.getRiderCarpool)
+    }
+  }
 
   render() {
     return (
@@ -23,6 +33,7 @@ class DriverDashboard extends React.Component {
             <p>State: {this.props.auth.user._state}</p>
             <p>District: {this.props.auth.user.district}</p>
             <p>Open Seats: 0/{this.props.auth.user.seats}</p>
+            <RiderList />
           </div>
         }
       </div>
@@ -36,8 +47,17 @@ const mapStateToProps = (state) => {
    auth: {
      isLoggedIn: state.auth.isLoggedIn,
      user: state.auth.user
+   },
+   carpoolsReducer: {
+     driverCarpool: state.carpoolsReducer.driverCarpool
    }
  }
 }
 
-export default connect(mapStateToProps)(DriverDashboard)
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    getDriverCarpool: getDriverCarpool
+  }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DriverDashboard)

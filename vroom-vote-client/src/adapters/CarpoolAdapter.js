@@ -1,13 +1,6 @@
 const baseUrl = 'http://localhost:3000/api/v1'
 
-class DistrictAdapter {
-
-  static getDistrictDrivers() {
-    return fetch(`${baseUrl}/drivers`, {
-      method: 'GET',
-      headers: headers()
-    }).then(res => res.json())
-  }
+class CarpoolAdapter {
 
   static getMyCarpool() {
     return fetch(`${baseUrl}/driver`, {
@@ -33,4 +26,4 @@ function headers () {
   }
 }
 
-export default DistrictAdapter
+export default CarpoolAdapter
