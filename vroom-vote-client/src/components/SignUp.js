@@ -3,7 +3,7 @@ import UserAdapter from '../adapters/UserAdapter'
 import { Link, withRouter } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { logIn, logOut } from '../actions'
+import { logIn, logOut, getDistrictDrivers, getRiderCarpool } from '../actions'
 
 class SignUp extends React.Component {
   state = {
@@ -43,6 +43,8 @@ class SignUp extends React.Component {
         if(!user.error) {
           this.props.logIn(user)
           localStorage.setItem('jwt', user.jwt)
+          this.props.getDistrictDrivers(user.drivers)
+          this.props.getRiderCarpool(user.carpool)
           this.props.history.push('/profile')
         }
       })
@@ -176,6 +178,13 @@ const mapStateToProps = (state) => {
     auth: {
       isLoggedIn: state.auth.isLoggedIn,
       user: state.auth.user
+    },
+    driversReducer: {
+      drivers: state.driversReducer.drivers
+    },
+    carpoolsReducer: {
+      carpools: state.carpoolsReducer.carpools,
+      riderCarpool: state.carpoolsReducer.riderCarpool
     }
   }
 }
@@ -183,7 +192,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     logIn: logIn,
-    logOut: logOut
+    logOut: logOut,
+    getDistrictDrivers: getDistrictDrivers,
+    getRiderCarpool: getRiderCarpool
   }, dispatch)
 }
 

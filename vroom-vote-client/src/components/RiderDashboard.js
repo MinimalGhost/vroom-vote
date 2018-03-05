@@ -3,7 +3,7 @@ import DriverList from './DriverList'
 import { Link } from 'react-router-dom'
 // import { Redirect } from 'react-router'
 import DistrictAdapter from '../adapters/DistrictAdapter'
-import { getDistrictDrivers, setMyDriver } from '../actions'
+import { getRiderCarpool } from '../actions'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
@@ -11,23 +11,21 @@ import { connect } from 'react-redux'
 class RiderDashboard extends React.Component {
 
   componentWillMount = () => {
-    if(this.props.auth.user) {
-      let haveDriver = DistrictAdapter.getMyDriver()
-      .then(this.props.setMyDriver)
-
-      if (!haveDriver) {
-        DistrictAdapter.getRiderData()
-        .then(this.props.getDistrictDrivers)
-      }
-    }
+    // if(this.props.auth.user) {
+    //   let haveDriver = DistrictAdapter.getMyDriver()
+    //   .then(this.props.setMyDriver)
+    //
+    //   if (!haveDriver) {
+    //     DistrictAdapter.getRiderData()
+    //     .then(this.props.getDistrictDrivers)
+    //   }
+    // }
   }
-
-
 
   selectDriver = (e, driver) => {
     console.log(driver.id);
     DistrictAdapter.joinCarpool(driver.id)
-    .then(this.props.setMyDriver)
+    .then(this.props.getRiderCarpool)
   }
 
   render() {
@@ -48,8 +46,8 @@ class RiderDashboard extends React.Component {
             <p>State: {this.props.auth.user._state}</p>
             <p>District: {this.props.auth.user.district}</p>
             {
-              this.props.driversReducer.myDriver ?
-              <p>You are riding with {this.props.driversReducer.myDriver.username}</p>
+              this.props.carpoolsReducer.riderCarpool ?
+              <p>You are riding with {this.props.carpoolsReducer.riderCarpool.driver}</p>
               :
               <DriverList selectDriver={this.selectDriver}/>
             }
@@ -61,22 +59,25 @@ class RiderDashboard extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state);
  return {
    auth: {
      isLoggedIn: state.auth.isLoggedIn,
      user: state.auth.user
    },
    driversReducer: {
-     drivers: state.driversReducer.drivers,
-     myDriver: state.driversReducer.myDriver
+     drivers: state.driversReducer.drivers
+   },
+   carpoolsReducer: {
+     carpools: state.carpoolsReducer.carpools,
+     riderCarpool: state.carpoolsReducer.riderCarpool
    }
  }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    getDistrictDrivers: getDistrictDrivers,
-    setMyDriver: setMyDriver
+    getRiderCarpool: getRiderCarpool
   }, dispatch)
 }
 

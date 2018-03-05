@@ -4,7 +4,7 @@ class Api::V1::UsersController < ApplicationController
 
   def index
     districtDrivers = User.where(district: current_user.district, is_driver: true)
-    
+
     render json: districtDrivers
     # otherwise send back drivers in district
   end
@@ -20,6 +20,9 @@ class Api::V1::UsersController < ApplicationController
     obj = civicData['divisions'].values[2]
     user.district = obj.values[0]
 
+    # Current users district drivers
+    drivers = User.where(district: user.district, is_driver: true)
+
     if user.save
       # if user is driver create a carpool and associate it
       if user.is_driver
@@ -30,9 +33,8 @@ class Api::V1::UsersController < ApplicationController
       user = User.find_by(username: params[:username])
       if user.present? && user.authenticate(params[:password])
         created_jwt = issue_token({id: user.id})
-        render json: { user: user, jwt: created_jwt, carpool: carpool }
+        render json: { user: user, jwt: created_jwt, drivers: drivers }
       end
-      # render json: user
     else
       render json: {error: user.errors.first}
     end
