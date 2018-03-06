@@ -7,6 +7,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :_state
       t.string :district
       t.boolean :is_driver
+      t.string :charity
       t.integer :seats
       t.string :password_digest
 

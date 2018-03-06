@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20180303163254) do
     t.string "_state"
     t.string "district"
     t.boolean "is_driver"
+    t.string "charity"
     t.integer "seats"
     t.string "password_digest"
     t.datetime "created_at", null: false

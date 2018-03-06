@@ -13,6 +13,8 @@ class SignUp extends React.Component {
     _state: 'AL',
     is_driver: true,
     seats: '',
+    charity: '',
+    avatarPhoto: [],
     password: '',
     password_confirmation: ''
   }
@@ -145,6 +147,15 @@ class SignUp extends React.Component {
                     onChange={this.handleInputChange}
                     value={this.state.seats}
                   />
+                  <br />
+                  <label>Sponsor Charity: </label><br />
+                  <input
+                    type="text"
+                    name="charity"
+                    onChange={this.handleInputChange}
+                    value={this.state.charity}
+                  />
+                  <br />
                 </div>
                 :
                   null

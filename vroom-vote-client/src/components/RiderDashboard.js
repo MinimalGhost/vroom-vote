@@ -46,7 +46,6 @@ class RiderDashboard extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  debugger
  return {
    auth: {
      isLoggedIn: state.auth.isLoggedIn,

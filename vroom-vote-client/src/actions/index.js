@@ -1,3 +1,5 @@
+import config from '../config'
+
 export function logIn(user) {
   console.log(user);
   return { type: 'LOG_IN', ...user }
@@ -21,4 +23,11 @@ export function joinCarpool(carpool) {
 
 export function getDriverCarpool(driverCarpool) {
   return { type: 'GET_DRIVER_CARPOOL', driverCarpool: driverCarpool }
+}
+
+export function getMyLocation(driverAddress) {
+  return (dispatch) => {
+    return fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${driverAddress}&key=${config.GEOCODE_KEY}`)
+    .then(resp => resp.json())
+  }
 }

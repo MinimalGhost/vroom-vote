@@ -26,3 +26,15 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.google-map {
+  resize: both;
+ grid-area: a;
+ width: 500px;
+ height: 500px;
+ border-color: black;
+ border-width: 1px;
+ grid-column-start: 1;
+ grid-row-start: 1;
+ margin: 0 auto;
+}

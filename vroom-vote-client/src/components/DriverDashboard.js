@@ -2,14 +2,16 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 // import { Redirect } from 'react-router'
 import CarpoolAdapter from '../adapters/CarpoolAdapter'
-import { getDriverCarpool } from '../actions'
+import { getDriverCarpool, getMyLocation } from '../actions'
 import { bindActionCreators } from 'redux'
+import Map from './Map'
 import RiderList from './RiderList'
 import { connect } from 'react-redux'
 
 class DriverDashboard extends React.Component {
 
   componentDidMount = () => {
+
     if(this.props.auth.user) {
       CarpoolAdapter.getMyCarpool()
       .then(this.props.getRiderCarpool)
@@ -32,7 +34,9 @@ class DriverDashboard extends React.Component {
             <p>City/Town: {this.props.auth.user.locale}</p>
             <p>State: {this.props.auth.user._state}</p>
             <p>District: {this.props.auth.user.district}</p>
-            <p>Open Seats: 0/{this.props.auth.user.seats}</p>
+            <p>Charity: <a target="_blank" href={this.props.auth.user.charity}>{this.props.auth.user.charity}</a></p>
+            <p>Open Seats: {this.props.auth.user.seats - this.props.auth.user.carpools[0].users.length - 1}/{this.props.auth.user.seats}</p>
+            <Map />
             <RiderList />
           </div>
         }

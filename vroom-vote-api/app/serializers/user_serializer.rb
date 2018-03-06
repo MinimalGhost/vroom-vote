@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :username, :address, :_state, :locale, :is_driver, :seats, :district
+  attributes :id, :username, :address, :_state, :locale, :is_driver, :seats, :district, :charity
 
   # has_many :carpools_driven, class_name: "Carpool", foreign_key: "driver_id"
 
