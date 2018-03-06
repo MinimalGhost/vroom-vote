@@ -3,7 +3,8 @@ import RiderItem from './RiderItem'
 import { connect } from 'react-redux'
 
 const RiderList = (props) => {
-    let myRiders = props.auth.user.carpools[0].users.map(user => <div>{user.username}</div>)
+    let myRiders = props.auth.user.carpools[0].users.map(user => <RiderItem user={user} />)
+    myRiders.shift()
     return (
       <div>
         <h4>Here are your riders</h4>
