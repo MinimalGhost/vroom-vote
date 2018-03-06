@@ -1,20 +1,20 @@
 export default (state = {
   isLoggedIn: false,
-  hasErrored: false,
-  isLoading: false,
   user: {
-    is_driver: false
+    is_driver: null,
+    carpools: [],
   }
 }, action) => {
   switch(action.type) {
     case 'LOG_IN':
-      return { ...state, isLoggedIn: true, ...action.user }
+    console.log('ACTION DOT USER MANG', action.user);
+      return { ...state, isLoggedIn: true, user: action.user }
     case 'LOG_OUT':
       return { ...state, isLoggedIn: false, user: {}}
-    case 'HAS_ERRORED':
-      return { ...state,  hasErrored: true, ...action.hasErrored }
-    case 'IS_LOADING':
-      return { ...state, isLoading: true, ...action.isLoading }
+    case 'JOIN_CARPOOL':
+    let user = {...state.user, carpools: [action.carpool]}
+    let newState = { ...state, user}
+    return newState
     default:
       return state
   }

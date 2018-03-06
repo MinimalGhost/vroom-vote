@@ -1,12 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Redirect } from 'react-router'
-import { userFetchData } from '../actions'
 import { connect } from 'react-redux'
 
 class Profile extends React.Component {
 
   render() {
+    console.log(this.props.auth);
     return (
       <div>
         { !this.props.auth.isLoggedIn ?
@@ -34,20 +34,13 @@ class Profile extends React.Component {
 
 
 const mapStateToProps = (state) => {
+
  return {
    auth: {
      isLoggedIn: state.auth.isLoggedIn,
-     user: state.auth.user,
-     hasErrored: state.auth.hasErrored,
-     isLoading: state.auth.isLoading
+     user: state.auth.user
    }
  }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchData: (url) => dispatch(userFetchData(url))
-  }
-}
-
-export default connect(mapStateToProps,mapDispatchToProps)(Profile)
+export default connect(mapStateToProps)(Profile)

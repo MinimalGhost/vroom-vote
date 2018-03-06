@@ -23,11 +23,14 @@ class Api::V1::UsersController < ApplicationController
     # Current users district drivers
     drivers = User.where(district: user.district, is_driver: true)
 
+
     if user.save
+
       # if user is driver create a carpool and associate it
       if user.is_driver
         carpool.driver_id = user.id
         carpool.save
+        CarpoolRider.create(carpool_id: carpool.id, user_id: user.id)
       end
       # trying to implement seamless login after user creation
       user = User.find_by(username: params[:username])

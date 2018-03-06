@@ -7,7 +7,7 @@ export default (state = {
     case 'GET_RIDER_CARPOOL':
       return { ...state, riderCarpool: action.riderCarpool }
       case 'GET_DRIVER_CARPOOL':
-        return { ...state, riderCarpool: action.driverCarpool }
+        return { ...state, riderCarpool: action.riderCarpool }
     default:
       return state
   }

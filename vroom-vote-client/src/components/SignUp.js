@@ -3,7 +3,7 @@ import UserAdapter from '../adapters/UserAdapter'
 import { Link, withRouter } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { logIn, logOut, getDistrictDrivers, getRiderCarpool } from '../actions'
+import { logIn, logOut, getDistrictDrivers } from '../actions'
 
 class SignUp extends React.Component {
   state = {
@@ -193,8 +193,7 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     logIn: logIn,
     logOut: logOut,
-    getDistrictDrivers: getDistrictDrivers,
-    getRiderCarpool: getRiderCarpool
+    getDistrictDrivers: getDistrictDrivers
   }, dispatch)
 }
 

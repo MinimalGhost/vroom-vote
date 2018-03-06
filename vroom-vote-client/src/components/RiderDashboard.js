@@ -3,7 +3,7 @@ import DriverList from './DriverList'
 import { Link } from 'react-router-dom'
 // import { Redirect } from 'react-router'
 import CarpoolAdapter from '../adapters/CarpoolAdapter'
-import { getRiderCarpool } from '../actions'
+import { getRiderCarpool, joinCarpool } from '../actions'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
@@ -13,7 +13,7 @@ class RiderDashboard extends React.Component {
   selectDriver = (e, driver) => {
     console.log(driver.id);
     CarpoolAdapter.joinCarpool(driver.id)
-    .then(this.props.getRiderCarpool)
+    .then(this.props.joinCarpool)
   }
 
   render() {
@@ -33,8 +33,8 @@ class RiderDashboard extends React.Component {
             <p>State: {this.props.auth._state}</p>
             <p>District: {this.props.auth.district}</p>
             {
-              !this.props.auth.carpool ?
-              <p>You are riding with {this.props.carpool}</p>
+              this.props.auth.carpools.length ?
+              <p>You are riding with {this.props.auth.carpools[0].users[0].username}</p>
               :
               <DriverList selectDriver={this.selectDriver}/>
             }
@@ -46,9 +46,11 @@ class RiderDashboard extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  debugger
  return {
    auth: {
-     ...state.auth
+     isLoggedIn: state.auth.isLoggedIn,
+     ...state.auth.user
    },
    driversReducer: {
      drivers: state.driversReducer.drivers
@@ -62,7 +64,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    getRiderCarpool: getRiderCarpool
+    joinCarpool: joinCarpool
   }, dispatch)
 }
 

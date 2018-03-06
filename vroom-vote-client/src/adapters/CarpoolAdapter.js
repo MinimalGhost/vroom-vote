@@ -14,7 +14,7 @@ class CarpoolAdapter {
       method: 'POST',
       headers: headers(),
       body: JSON.stringify(driver_id)
-    })
+    }).then(res => res.json())
   }
 }
 
