@@ -17,7 +17,6 @@ class RiderDashboard extends React.Component {
   }
 
   render() {
-
     return (
       <div>
         {
@@ -28,14 +27,14 @@ class RiderDashboard extends React.Component {
           </div>
         :
           <div>
-            <h3>Welcome, Rider {this.props.auth.user.username}</h3>
-            <p>Address: {this.props.auth.user.address}</p>
-            <p>City/Town: {this.props.auth.user.locale}</p>
-            <p>State: {this.props.auth.user._state}</p>
-            <p>District: {this.props.auth.user.district}</p>
+            <h3>Welcome, Rider {this.props.auth.username}</h3>
+            <p>Address: {this.props.auth.address}</p>
+            <p>City/Town: {this.props.auth.locale}</p>
+            <p>State: {this.props.auth._state}</p>
+            <p>District: {this.props.auth.district}</p>
             {
-              !this.props.carpoolsReducer.riderCarpool == null ?
-              <p>You are riding with {this.props.carpoolsReducer.riderCarpool.driver.username}</p>
+              !this.props.auth.carpool ?
+              <p>You are riding with {this.props.carpool}</p>
               :
               <DriverList selectDriver={this.selectDriver}/>
             }
@@ -49,8 +48,7 @@ class RiderDashboard extends React.Component {
 const mapStateToProps = (state) => {
  return {
    auth: {
-     isLoggedIn: state.auth.isLoggedIn,
-     user: state.auth.user
+     ...state.auth
    },
    driversReducer: {
      drivers: state.driversReducer.drivers

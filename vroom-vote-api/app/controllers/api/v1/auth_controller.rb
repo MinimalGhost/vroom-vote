@@ -2,7 +2,14 @@ class Api::V1::AuthController < ApplicationController
   before_action :authorize_user!, only: [:show]
 
   def show
-    render json: {user: current_user}
+    drivers = User.where(district: current_user.district, is_driver: true)
+
+    created_jwt = issue_token({id: current_user.id})
+    render json: {
+      user: UserSerializer.new(current_user),
+      jwt: created_jwt,
+      drivers: drivers
+    }
   end
 
   def create

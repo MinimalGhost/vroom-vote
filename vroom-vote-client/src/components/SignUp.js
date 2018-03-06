@@ -41,7 +41,7 @@ class SignUp extends React.Component {
       .then(res => res.json())
       .then(user  => {
         if(!user.error) {
-          this.props.logIn(user.user)
+          this.props.logIn(user)
           localStorage.setItem('jwt', user.jwt)
           // this.props.getDistrictDrivers(user.drivers)
           // this.props.getRiderCarpool(user.carpool)
