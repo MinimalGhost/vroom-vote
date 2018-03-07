@@ -6,7 +6,7 @@ import Marker from './Marker'
 import { connect } from 'react-redux'
 
 
-class Map extends React.Component {
+class DriverMap extends React.Component {
   static defaultProps = {
     center: {lat: 40.731134, lng: -73.984099},
     zoom: 12
@@ -55,4 +55,4 @@ const mapStateToProps = (state) => {
  }
 }
 
-export default connect(mapStateToProps)(Map)
+export default connect(mapStateToProps)(DriverMap)

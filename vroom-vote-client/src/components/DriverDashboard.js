@@ -2,9 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 // import { Redirect } from 'react-router'
 import CarpoolAdapter from '../adapters/CarpoolAdapter'
-import { getDriverCarpool, getMyLocation } from '../actions'
+import { getDriverCarpool } from '../actions'
 import { bindActionCreators } from 'redux'
-import Map from './Map'
+import DriverMap from './DriverMap'
 import RiderList from './RiderList'
 import { connect } from 'react-redux'
 
@@ -36,7 +36,7 @@ class DriverDashboard extends React.Component {
             <p>District: {this.props.auth.user.district}</p>
             <p>Charity: <a target="_blank" href={this.props.auth.user.charity}>{this.props.auth.user.charity}</a></p>
             <p>Open Seats: {this.props.auth.user.seats - this.props.auth.user.carpools[0].users.length - 1}/{this.props.auth.user.seats}</p>
-            <Map />
+            <DriverMap />
             <RiderList />
           </div>
         }
@@ -44,7 +44,6 @@ class DriverDashboard extends React.Component {
     )
   }
 }
-
 
 const mapStateToProps = (state) => {
  return {

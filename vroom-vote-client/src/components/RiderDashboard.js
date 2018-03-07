@@ -1,7 +1,7 @@
 import React from 'react'
 import DriverList from './DriverList'
+import RiderMap from './RiderMap'
 import { Link } from 'react-router-dom'
-// import { Redirect } from 'react-router'
 import CarpoolAdapter from '../adapters/CarpoolAdapter'
 import { getRiderCarpool, joinCarpool } from '../actions'
 import { bindActionCreators } from 'redux'
@@ -36,7 +36,10 @@ class RiderDashboard extends React.Component {
               this.props.auth.carpools.length ?
               <p>You are riding with {this.props.auth.carpools[0].users[0].username}</p>
               :
-              <DriverList selectDriver={this.selectDriver}/>
+              <div>
+                <RiderMap />
+                <DriverList selectDriver={this.selectDriver}/>
+              </div>
             }
           </div>
         }
