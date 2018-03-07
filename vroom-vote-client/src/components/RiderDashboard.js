@@ -34,7 +34,10 @@ class RiderDashboard extends React.Component {
             <p>District: {this.props.auth.district}</p>
             {
               this.props.auth.carpools.length ?
-              <p>You are riding with {this.props.auth.carpools[0].users[0].username}</p>
+              <div>
+                <h3>You are riding with {this.props.auth.carpools[0].users[0].username}</h3>
+                <p>Charity: <a href={this.props.auth.carpools[0].users[0].charity}>{this.props.auth.carpools[0].users[0].charity}</a></p>
+              </div>
               :
               <div>
                 <RiderMap />
