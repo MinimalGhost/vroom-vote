@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20180303163254) do
 
   create_table "users", force: :cascade do |t|
     t.string "username"
+    t.string "email"
     t.string "address"
     t.string "locale"
     t.string "_state"
@@ -38,7 +39,9 @@ ActiveRecord::Schema.define(version: 20180303163254) do
     t.decimal "longitude"
     t.boolean "is_driver"
     t.string "charity"
+    t.string "charity_url"
     t.integer "seats"
+    t.boolean "full", default: false
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

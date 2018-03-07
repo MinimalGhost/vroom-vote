@@ -34,7 +34,7 @@ class DriverDashboard extends React.Component {
             <p>City/Town: {this.props.auth.user.locale}</p>
             <p>State: {this.props.auth.user._state}</p>
             <p>District: {this.props.auth.user.district}</p>
-            <p>Charity: <a target="_blank" href={this.props.auth.user.charity}>{this.props.auth.user.charity}</a></p>
+            <p>Charity: <a target="_blank" href={this.props.auth.user.charity_url}>{this.props.auth.user.charity}</a></p>
             <p>Open Seats: {this.props.auth.user.seats - this.props.auth.user.carpools[0].users.length + 1}</p>
             <DriverMap />
             <RiderList />

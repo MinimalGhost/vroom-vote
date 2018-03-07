@@ -42,7 +42,7 @@ class Login extends React.Component {
             <Link to="/signup">Sign Up</Link>
 
             <form onSubmit={this.handleLoginSubmit}>
-              <label>Username: </label><br />
+              <label>Full Name: </label><br />
               <input
                 type="text"
                 value={this.state.username}

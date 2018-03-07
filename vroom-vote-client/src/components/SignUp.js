@@ -8,12 +8,14 @@ import { logIn, logOut, getDistrictDrivers } from '../actions'
 class SignUp extends React.Component {
   state = {
     username: '',
+    email: '',
     address: '',
     locale: '',
     _state: 'AL',
     is_driver: true,
     seats: '',
     charity: '',
+    charity_url: '',
     avatarPhoto: [],
     password: '',
     password_confirmation: ''
@@ -58,10 +60,15 @@ class SignUp extends React.Component {
         {!this.props.auth.isLoggedIn ?
           <div>
             <form onSubmit={this.handleSignup}>
-              <label>Username: </label><br />
+              <label>Full Name: </label><br />
               <input
                 type="text"
                 name="username" onChange={this.handleInputChange} value={this.state.username} />
+                <br />
+              <label>Email: </label><br />
+              <input
+                type="email"
+                name="email" onChange={this.handleInputChange} value={this.state.email} />
                 <br />
                 <label>Address: </label><br />
                 <input
@@ -148,12 +155,20 @@ class SignUp extends React.Component {
                     value={this.state.seats}
                   />
                   <br />
-                  <label>Sponsor Charity: </label><br />
+                  <label>Charity Name: </label><br />
                   <input
                     type="text"
                     name="charity"
                     onChange={this.handleInputChange}
                     value={this.state.charity}
+                  />
+                  <br />
+                  <label>Charity URL: </label><br />
+                  <input
+                    type="text"
+                    name="charity_url"
+                    onChange={this.handleInputChange}
+                    value={this.state.charity_url}
                   />
                   <br />
                 </div>

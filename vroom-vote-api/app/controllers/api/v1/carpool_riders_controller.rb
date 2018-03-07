@@ -19,6 +19,10 @@ class Api::V1::CarpoolRidersController < ApplicationController
     carpool = Carpool.find_by(driver_id: params[:_json])
     rider = CarpoolRider.new(carpool_id: carpool.id, user_id: current_user.id)
     if rider.save
+      if carpool.driver.seats == carpool.users.length - 1
+        carpool.driver.full = true
+        carpool.driver.save
+      end
       render json: carpool
     else
       render json: { error: rider.errors.first }

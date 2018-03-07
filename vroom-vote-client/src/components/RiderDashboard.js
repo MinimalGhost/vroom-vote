@@ -3,7 +3,7 @@ import DriverList from './DriverList'
 import RiderMap from './RiderMap'
 import { Link } from 'react-router-dom'
 import CarpoolAdapter from '../adapters/CarpoolAdapter'
-import { getRiderCarpool, joinCarpool } from '../actions'
+import { joinCarpool } from '../actions'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
@@ -36,7 +36,8 @@ class RiderDashboard extends React.Component {
               this.props.auth.carpools.length ?
               <div>
                 <h3>You are riding with {this.props.auth.carpools[0].users[0].username}</h3>
-                <p>Charity: <a href={this.props.auth.carpools[0].users[0].charity}>{this.props.auth.carpools[0].users[0].charity}</a></p>
+                <p>Email: {this.props.auth.carpools[0].users[0].email}</p>
+                <p>Charity: <a href={this.props.auth.carpools[0].users[0].charity_url}>{this.props.auth.carpools[0].users[0].charity}</a></p>
               </div>
               :
               <div>

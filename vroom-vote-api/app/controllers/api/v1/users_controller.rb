@@ -38,7 +38,7 @@ class Api::V1::UsersController < ApplicationController
     user.district = obj.values[0]
 
     # Current users district drivers
-    drivers = User.where(district: user.district, is_driver: true)
+    drivers = User.where(district: user.district, is_driver: true, full: false)
 
 
     if user.save
@@ -66,6 +66,6 @@ class Api::V1::UsersController < ApplicationController
 
   private
     def user_params
-      params.permit(:username, :address, :_state, :locale, :is_driver, :seats, :charity, :password, :password_confirmation)
+      params.permit(:username, :email, :address, :_state, :locale, :is_driver, :seats, :charity, :charity_url, :password, :password_confirmation)
     end
 end
