@@ -20,6 +20,9 @@ class Api::V1::CarpoolRidersController < ApplicationController
     rider = CarpoolRider.new(carpool_id: carpool.id, user_id: current_user.id)
     if rider.save
       if carpool.driver.seats == carpool.users.length - 1
+        byebug
+        # check current_user
+        # check carpool before and after save
         carpool.driver.full = true
         carpool.driver.save
       end

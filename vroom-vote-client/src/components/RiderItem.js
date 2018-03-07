@@ -1,13 +1,22 @@
 import React from 'react'
+import { List } from 'semantic-ui-react'
 
 const RiderItem = (props) => {
   return (
-    <div>
-      <p>Name: {props.user.username}</p>
-      <p>Email: {props.user.email}</p>
-      <p>Address: {props.user.address} - {props.user.locale}, {props.user._state}</p>
-      <p></p>
-    </div>
+    <List>
+      <List.Item>
+        <List.Icon name='users' />
+        <List.Content>{props.user.username}</List.Content>
+      </List.Item>
+      <List.Item>
+        <List.Icon name='marker' />
+        <List.Content>{props.user.address} - {props.user.locale}, {props.user._state}</List.Content>
+      </List.Item>
+      <List.Item>
+        <List.Icon name='mail' />
+        <List.Content>{props.user.email}</List.Content>
+      </List.Item>
+    </List>
   )
 }
 

@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -25,13 +25,13 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
-}
+} */
 
 .google-map {
   resize: both;
  grid-area: a;
- width: 500px;
- height: 500px;
+ width: 350px;
+ height: 350px;
  border-color: black;
  border-width: 1px;
  grid-column-start: 1;

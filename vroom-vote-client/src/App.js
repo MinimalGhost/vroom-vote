@@ -28,14 +28,13 @@ class App extends Component {
   logout = () => {
     localStorage.removeItem('jwt')
     this.props.logOut()
+    this.props.history.push('/login')
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className="App">
         {this.props.auth.isLoggedIn ? <button onClick={this.logout}>Logout</button> : null }
-        <Link to="/profile">Profile</Link>
         <Switch>
           <Route exact path='/login' component={Login} />
           <Route exact path='/signup' component={SignUp} />

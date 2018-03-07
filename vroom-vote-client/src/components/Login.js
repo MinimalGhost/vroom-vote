@@ -4,6 +4,7 @@ import { Link, withRouter } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { logIn, logOut, getDistrictDrivers } from '../actions'
+import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 
 
 class Login extends React.Component {
@@ -36,31 +37,55 @@ class Login extends React.Component {
 
   render() {
     return(
-      <div>
+      <div className='login-form'>
+        <style>{`
+          body > div,
+          body > div > div,
+          body > div > div > div.login-form {
+            height: 100%;
+          }
+        `}</style>
         {!this.props.auth.isLoggedIn ?
-          <div>
-            <Link to="/signup">Sign Up</Link>
-
-            <form onSubmit={this.handleLoginSubmit}>
-              <label>Full Name: </label><br />
-              <input
-                type="text"
-                value={this.state.username}
-                onChange={this.handleInputChange}
-                name="username"
-              />
-              <br />
-              <label>Password: </label><br />
-              <input
-                type="password"
-                value={this.state.password}
-                onChange={this.handleInputChange}
-                name="password"
-              />
-              <br />
-              <input type="submit" />
-            </form>
-          </div>
+          <Grid
+            textAlign='center'
+            style={{ height: '100%'}}
+            verticalAlign='middle'
+          >
+            <Grid.Column style={{ maxWidth: 450 }}>
+              <Header as='h2' color='teal' textAlign='center'>
+                <Image src='/vv.png' />
+                {' '}VROOMvote
+              </Header>
+              <Form size='large' onSubmit={this.handleLoginSubmit}>
+                <Segment stacked>
+                  <Form.Input
+                    fluid
+                    icon='user'
+                    iconPosition='left'
+                    placeholder='Full Name'
+                    type="text"
+                    value={this.state.username}
+                    onChange={this.handleInputChange}
+                    name="username"
+                  />
+                  <Form.Input
+                    fluid
+                    icon='lock'
+                    iconPosition='left'
+                    placeholder='Password'
+                    type="password"
+                    value={this.state.password}
+                    onChange={this.handleInputChange}
+                    name="password"
+                  />
+                  <Button color='teal' fluid size='large' type="submit">Login</Button>
+                </Segment>
+              </Form>
+              <Message>
+                No account? <Link to="/signup">Sign Up</Link>
+              </Message>
+            </Grid.Column>
+          </Grid>
         :
           null
         }

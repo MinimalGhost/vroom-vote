@@ -22,6 +22,7 @@ class RiderDashboard extends React.Component {
         {
           !this.props.auth.isLoggedIn ?
           <div>
+            <h3>Rider Dashboard</h3>
             <Link to="/login">Login</Link>
             <Link to="/signup">Sign Up</Link>
           </div>
