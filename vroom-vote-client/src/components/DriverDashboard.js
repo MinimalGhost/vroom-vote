@@ -6,7 +6,7 @@ import { getDriverCarpool } from '../actions'
 import { bindActionCreators } from 'redux'
 import DriverMap from './DriverMap'
 import RiderList from './RiderList'
-import { Container, Grid, Segment, Dvivider } from 'semantic-ui-react'
+import { Container, Grid, Segment, Divider } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 
 class DriverDashboard extends React.Component {
