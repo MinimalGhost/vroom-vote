@@ -6,6 +6,8 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :locale
       t.string :_state
       t.string :district
+      t.decimal :latitude
+      t.decimal :longitude
       t.boolean :is_driver
       t.string :charity
       t.integer :seats

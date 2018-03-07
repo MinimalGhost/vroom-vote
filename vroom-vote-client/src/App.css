@@ -38,3 +38,11 @@
  grid-row-start: 1;
  margin: 0 auto;
 }
+
+.home-icon {
+  width: 25px;
+}
+
+.rider-icon {
+  width: 25px;
+}

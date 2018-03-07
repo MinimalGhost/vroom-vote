@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 20180303163254) do
     t.string "locale"
     t.string "_state"
     t.string "district"
+    t.decimal "latitude"
+    t.decimal "longitude"
     t.boolean "is_driver"
     t.string "charity"
     t.integer "seats"

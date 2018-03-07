@@ -15,6 +15,20 @@ class Api::V1::UsersController < ApplicationController
   def create
     user = User.new(user_params)
     carpool = Carpool.new()
+
+    # get lat lon and add it to user
+    uAddress = user_params[:address].gsub(' ','+')
+    uLoc = user_params[:locale].gsub(' ','+')
+    uState = user_params[:_state]
+    uMaster = "#{uAddress}#{uLoc}#{uState}"
+    geoResponse = RestClient.get("https://maps.googleapis.com/maps/api/geocode/json?address=#{uMaster}&key=#{ENV['GEOCODE_KEY']}")
+
+    geoData = JSON.parse(geoResponse)
+    user.latitude = geoData['results'][0]['geometry']['location']['lat']
+    user.longitude = geoData['results'][0]['geometry']['location']['lng']
+    # user.latitude = geoData['geometry']['location'].values[0]
+    # user.longitude = geoData['geometry']['location'].values[1]
+
     #get district and add it to user
     userAddress = URI.encode(user_params[:address])
     userLocale = URI.encode(user_params[:locale])
