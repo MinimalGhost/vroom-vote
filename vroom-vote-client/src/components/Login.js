@@ -57,7 +57,7 @@ class Login extends React.Component {
                 {' '}VROOMvote
               </Header>
               <Form size='large' onSubmit={this.handleLoginSubmit}>
-                <Segment stacked>
+                <Segment>
                   <Form.Input
                     fluid
                     icon='user'

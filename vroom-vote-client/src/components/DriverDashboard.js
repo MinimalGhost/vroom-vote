@@ -6,7 +6,7 @@ import { getDriverCarpool } from '../actions'
 import { bindActionCreators } from 'redux'
 import DriverMap from './DriverMap'
 import RiderList from './RiderList'
-import { Container, Grid, Segment, Divider } from 'semantic-ui-react'
+import { Container, Button, Grid, Segment, Divider, Header } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 
 class DriverDashboard extends React.Component {
@@ -21,36 +21,46 @@ class DriverDashboard extends React.Component {
 
   render() {
     return (
-      <Container>
+      <div>
         { !this.props.auth.isLoggedIn ?
           <div>
-            <h3>Driver Dashboard</h3>
             <Link to="/login">Login</Link>
             <Link to="/signup">Sign Up</Link>
           </div>
         :
-
-          <Grid columns={2} relaxed>
-            <Grid.Column>
-              <Segment basic>
-                <h3>Welcome, Driver {this.props.auth.user.username}</h3>
+        <Grid textAlign='center'
+       style={{ height: '100%'}}
+       verticalAlign='middle'>
+          <Grid.Column style={{ maxWidth: 850 }}>
+            <Grid>
+              <Grid.Column>
+                <Header as='h3' color='teal' textAlign='center'>
+                Welcome, Driver {this.props.auth.user.username}
+                </Header>
                 <p>Address: {this.props.auth.user.address}</p>
                 <p>City/Town: {this.props.auth.user.locale}</p>
                 <p>State: {this.props.auth.user._state}</p>
                 <p>District: {this.props.auth.user.district}</p>
                 <p>Charity: <a target="_blank" href={this.props.auth.user.charity_url}>{this.props.auth.user.charity}</a></p>
                 <p>Open Seats: {this.props.auth.user.seats - this.props.auth.user.carpools[0].users.length + 1}</p>
+              </Grid.Column>
+            </Grid>
+            <Grid columns={2} relaxed>
+              <Grid.Column>
+              <Segment raised>
+                <RiderList />
               </Segment>
-            </Grid.Column>
-            <Grid.Column>
-              <RiderList />
-            </Grid.Column>
-            <Grid.Column>
-              <DriverMap />
-            </Grid.Column>
-          </Grid>
+              </Grid.Column>
+              <Grid.Column>
+                <Segment raised>
+                <DriverMap />
+                </Segment>
+              </Grid.Column>
+            </Grid>
+          </Grid.Column>
+        </Grid>
         }
-      </Container>
+      </div>
     )
   }
 }

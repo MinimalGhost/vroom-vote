@@ -1,5 +1,5 @@
 import React from 'react'
-import { List } from 'semantic-ui-react'
+import { List, Segment, Divider } from 'semantic-ui-react'
 
 const RiderItem = (props) => {
   return (
@@ -16,6 +16,7 @@ const RiderItem = (props) => {
         <List.Icon name='mail' />
         <List.Content>{props.user.email}</List.Content>
       </List.Item>
+      <Divider />
     </List>
   )
 }

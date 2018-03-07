@@ -57,29 +57,23 @@ class SignUp extends React.Component {
 
   render() {
     return (
-      <div className='signup-form'>
-      <style>{`
-        body > div,
-        body > div > div,
-        body > div > div > div.login-form {
-          height: 100%;
-        }
-      `}</style>
+      <div>
         {!this.props.auth.isLoggedIn ?
           <Grid
             textAlign='center'
             style={{ height: '100%' }}
             verticalAlign='middle'
           >
-            <Grid.Column style={{ maxWidth: 650 }}>
+            <Grid.Column style={{ maxWidth: 500 }}>
               <Header as='h2' color='teal' textAlign='center'>
                 <Image src='/vv.png' />
-                {' '}Sign-Up for an account
+                {' '}VROOMvote Sign Up
               </Header>
               <Form class="ui form" size='medium' onSubmit={this.handleSignup}>
                 <Segment>
-                  <Grid columns={2} relaxed>
+                  <Grid columns={2} textAlign='left' relaxed>
                     <Grid.Column>
+                      <label>Full Name</label><br />
                       <Form.Input
                         fluid
                         icon="user"
@@ -89,6 +83,7 @@ class SignUp extends React.Component {
                         name="username" onChange={this.handleInputChange} value={this.state.username} />
                       </Grid.Column>
                       <Grid.Column>
+                        <label>Email</label><br />
                         <Form.Input
                           fluid
                           icon="mail"
@@ -101,8 +96,9 @@ class SignUp extends React.Component {
                         />
                       </Grid.Column>
                     </Grid>
-                    <Grid columns={2} relaxed>
+                    <Grid columns={2} textAlign='left'relaxed>
                       <Grid.Column>
+                        <label>Address</label><br />
                         <Form.Input
                           fluid
                           icon="marker"
@@ -115,6 +111,7 @@ class SignUp extends React.Component {
                         />
                       </Grid.Column>
                       <Grid.Column>
+                        <label>City/Town</label><br />
                         <Form.Input
                           fluid
                           icon="marker"
@@ -127,7 +124,7 @@ class SignUp extends React.Component {
                         />
                       </Grid.Column>
                     </Grid>
-                    <Grid columns={2} relaxed>
+                    <Grid columns={2} textAlign='left' relaxed>
                       <Grid.Column>
                         <label>State</label><br />
                         <select class="ui fluid dropdown"
@@ -189,7 +186,7 @@ class SignUp extends React.Component {
                         </select>
                       </Grid.Column>
                       <Grid.Column>
-                        <label>Profile</label><br />
+                        <label>Profile Type</label><br />
                         <select class="ui fluid dropdown"
                           name="is_driver"
                           onChange={this.handleProfileToggle}>
@@ -199,10 +196,12 @@ class SignUp extends React.Component {
                       </Grid.Column>
                     <br />
                     </Grid>
+                    <br />
                   {this.state.is_driver === true ?
                     <Segment>
-                      <Grid columns={2} relaxed>
+                      <Grid columns={2} textAlign='left' relaxed>
                         <Grid.Column>
+                          <label>Seats</label><br />
                           <Form.Input
                             fluid
                             icon="users"
@@ -215,6 +214,7 @@ class SignUp extends React.Component {
                           />
                         </Grid.Column>
                         <Grid.Column>
+                          <label>Charity</label><br />
                           <Form.Input
                             fluid
                             icon="money"
@@ -227,13 +227,14 @@ class SignUp extends React.Component {
                           />
                         </Grid.Column>
                       </Grid>
-                      <Grid>
+                      <Grid textAlign='left'>
                         <Grid.Column>
+                          <label>Charity Website</label><br />
                           <Form.Input
                             fluid
                             icon="chain"
                             iconPosition="left"
-                            placeholder="Charity website URL"
+                            placeholder="Charity Website"
                             type="text"
                             name="charity_url"
                             onChange={this.handleInputChange}
@@ -245,20 +246,27 @@ class SignUp extends React.Component {
                     :
                       null
                   }
-                  <Form.Input
-                    fluid
-                    icon="lock"
-                    iconPosition="left"
-                    placeholder="Password"
-                    type="password"
-                    name="password"  onChange={this.handleInputChange} value={this.state.password} />
-                  <Form.Input
-                    fluid
-                    icon="lock"
-                    iconPosition="left"
-                    placeholder="Confirm password"
-                    type="password"
-                    name="password_confirmation" onChange={this.handleInputChange} value={this.state.password_confirmation} />
+                  <Grid columns={1} textAlign='left'>
+                    <Grid.Column>
+                      <label>Password</label><br />
+                      <Form.Input
+                        fluid
+                        icon="lock"
+                        iconPosition="left"
+                        placeholder="Password"
+                        type="password"
+                        name="password"  onChange={this.handleInputChange} value={this.state.password} />
+                      <label>Confirm password</label><br />
+                      <Form.Input
+                        fluid
+                        icon="lock"
+                        iconPosition="left"
+                        placeholder="Confirm password"
+                        type="password"
+                        name="password_confirmation" onChange={this.handleInputChange} value={this.state.password_confirmation} />
+                    </Grid.Column>
+                  </Grid>
+                  <br />
                     {
                       (this.state.password !== this.state.password_confirmation && this.state.password_confirmation.length > 0)
                       ? <p>Passwords Must Match</p> : null
