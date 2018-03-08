@@ -8,7 +8,7 @@ const RiderList = (props) => {
     console.log(myRiders)
     return (
       <div>
-        <h4>Here are your riders</h4>
+        <h4>People riding with you</h4>
         {myRiders}
       </div>
     )

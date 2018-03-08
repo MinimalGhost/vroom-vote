@@ -46,3 +46,17 @@
 .rider-icon {
   width: 25px;
 }
+
+.font1 {
+  margin-top: 200px;
+  font-family: 'Rammetto One', cursive;
+  font-size: 1.2em;
+  color: #1CB5AC;
+}
+
+.font2 {
+  margin-top: 200px;
+  font-family: 'Indie Flower', cursive;
+  font-size: 1.2em;
+  color: #E33A22;
+}

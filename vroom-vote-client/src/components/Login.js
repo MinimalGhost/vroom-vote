@@ -52,9 +52,9 @@ class Login extends React.Component {
             verticalAlign='middle'
           >
             <Grid.Column style={{ maxWidth: 450 }}>
-              <Header as='h2' color='teal' textAlign='center'>
+              <Header as='h1' color='teal' textAlign='center'>
                 <Image src='/vv.png' />
-                {' '}VROOMvote
+                {' '}<span className="font1">VROOM</span><span className="font2">vote</span>
               </Header>
               <Form size='large' onSubmit={this.handleLoginSubmit}>
                 <Segment>

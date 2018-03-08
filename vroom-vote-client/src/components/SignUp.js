@@ -66,8 +66,8 @@ class SignUp extends React.Component {
           >
             <Grid.Column style={{ maxWidth: 500 }}>
               <Header as='h2' color='teal' textAlign='center'>
-                <Image src='/vv.png' />
-                {' '}VROOMvote Sign Up
+              <Image src='/vv.png' />
+              {' '}<span className="font1">VROOM</span><span className="font2">vote</span>
               </Header>
               <Form class="ui form" size='medium' onSubmit={this.handleSignup}>
                 <Segment>

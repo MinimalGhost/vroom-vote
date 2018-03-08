@@ -6,6 +6,7 @@ import CarpoolAdapter from '../adapters/CarpoolAdapter'
 import { joinCarpool } from '../actions'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import { Container, Button, Grid, Segment, Divider, Header } from 'semantic-ui-react'
 
 
 class RiderDashboard extends React.Component {
@@ -22,31 +23,44 @@ class RiderDashboard extends React.Component {
         {
           !this.props.auth.isLoggedIn ?
           <div>
-            <h3>Rider Dashboard</h3>
             <Link to="/login">Login</Link>
             <Link to="/signup">Sign Up</Link>
           </div>
         :
-          <div>
-            <h3>Welcome, Rider {this.props.auth.username}</h3>
-            <p>Address: {this.props.auth.address}</p>
-            <p>City/Town: {this.props.auth.locale}</p>
-            <p>State: {this.props.auth._state}</p>
-            <p>District: {this.props.auth.district}</p>
-            {
-              this.props.auth.carpools.length ?
-              <div>
-                <h3>You are riding with {this.props.auth.carpools[0].users[0].username}</h3>
-                <p>Email: {this.props.auth.carpools[0].users[0].email}</p>
-                <p>Charity: <a href={this.props.auth.carpools[0].users[0].charity_url}>{this.props.auth.carpools[0].users[0].charity}</a></p>
-              </div>
-              :
-              <div>
-                <RiderMap />
-                <DriverList selectDriver={this.selectDriver}/>
-              </div>
-            }
-          </div>
+          <Grid textAlign='center'
+           style={{ height: '100%'}}
+           verticalAlign='middle'>
+          <Grid.Column style={{ maxWidth: 850 }}>
+            <Grid>
+            <Grid.Column>
+              <Header as='h3' color='teal' textAlign='center'>Welcome, Rider {this.props.auth.username}</Header>
+              <p>Address: {this.props.auth.address}</p>
+              <p>City/Town: {this.props.auth.locale}</p>
+              <p>State: {this.props.auth._state}</p>
+              <p>District: {this.props.auth.district}</p>
+            </Grid.Column>
+            </Grid>
+              {
+                this.props.auth.carpools.length ?
+                <div>
+                  <h3>You are riding with {this.props.auth.carpools[0].users[0].username}</h3>
+                  <p>Email: {this.props.auth.carpools[0].users[0].email}</p>
+                  <p>Charity: <a href={this.props.auth.carpools[0].users[0].charity_url}>{this.props.auth.carpools[0].users[0].charity}</a></p>
+                </div>
+                :
+                <Grid columns={2}>
+                  <Grid.Column>
+                    <DriverList selectDriver={this.selectDriver}/>
+                  </Grid.Column>
+                  <Grid.Column>
+                    <Segment raised>
+                      <RiderMap />
+                    </Segment>
+                  </Grid.Column>
+                </Grid>
+              }
+            </Grid.Column>
+          </Grid>
         }
       </div>
     )

@@ -11,6 +11,7 @@ import SignUp from './components/SignUp'
 import Profile from './components/Profile'
 import RiderDashboard from './components/RiderDashboard'
 import DriverDashboard from './components/DriverDashboard'
+import { Header, Image } from 'semantic-ui-react'
 
 class App extends Component {
 
@@ -34,7 +35,22 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {this.props.auth.isLoggedIn ? <button onClick={this.logout}>Logout</button> : null }
+        {this.props.auth.isLoggedIn ?
+          <div class="ui menu">
+            <div class="item">
+            <Header className='vroom' as='h2' color='teal' textAlign='center'>
+              <Image src='/vv.png' />
+              {' '}<span className="font1">VROOM</span><span className="font2">vote</span>
+            </Header>
+            </div>
+            <div class="right menu">
+              <div class="item">
+                 <div class="ui teal button" onClick={this.logout}>Log Out</div>
+              </div>
+            </div>
+          </div>
+
+ : null }
         <Switch>
           <Route exact path='/login' component={Login} />
           <Route exact path='/signup' component={SignUp} />

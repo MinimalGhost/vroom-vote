@@ -12,7 +12,6 @@ import { connect } from 'react-redux'
 class DriverDashboard extends React.Component {
 
   componentDidMount = () => {
-
     if(this.props.auth.user) {
       CarpoolAdapter.getMyCarpool()
       .then(this.props.getRiderCarpool)
@@ -32,28 +31,34 @@ class DriverDashboard extends React.Component {
        style={{ height: '100%'}}
        verticalAlign='middle'>
           <Grid.Column style={{ maxWidth: 850 }}>
-            <Grid>
+            <Grid columns={3}>
               <Grid.Column>
                 <Header as='h3' color='teal' textAlign='center'>
-                Welcome, Driver {this.props.auth.user.username}
+                Welcome, {this.props.auth.user.username}
                 </Header>
-                <p>Address: {this.props.auth.user.address}</p>
-                <p>City/Town: {this.props.auth.user.locale}</p>
-                <p>State: {this.props.auth.user._state}</p>
-                <p>District: {this.props.auth.user.district}</p>
-                <p>Charity: <a target="_blank" href={this.props.auth.user.charity_url}>{this.props.auth.user.charity}</a></p>
-                <p>Open Seats: {this.props.auth.user.seats - this.props.auth.user.carpools[0].users.length + 1}</p>
+                <p>You&apos;re driving voters in {this.props.auth.user.district}</p>
+              </Grid.Column>
+              <Grid.Column>
+                <Header as='h3' color='teal' textAlign='center'>
+                  <a target="_blank" href={this.props.auth.user.charity_url}>{this.props.auth.user.charity}</a>
+                </Header>
+                <p>Your promoted charity</p>
+              </Grid.Column>
+              <Grid.Column>
+                <Header as='h1' color='teal' textAlign='center'>
+                  {this.props.auth.user.seats - this.props.auth.user.carpools[0].users.length + 1}
+                </Header>
+                <p>Seats left</p>
               </Grid.Column>
             </Grid>
+            <Divider />
             <Grid columns={2} relaxed>
               <Grid.Column>
-              <Segment raised>
                 <RiderList />
-              </Segment>
               </Grid.Column>
               <Grid.Column>
                 <Segment raised>
-                <DriverMap />
+                  <DriverMap />
                 </Segment>
               </Grid.Column>
             </Grid>
