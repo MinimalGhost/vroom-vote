@@ -8,7 +8,7 @@ import { connect } from 'react-redux'
 
 class DriverMap extends React.Component {
   static defaultProps = {
-    center: {lat: 40.7315233, lng: -73.8504063},
+    center: {lat: 40.7215233, lng: -73.8604063},
     zoom: 13
   };
 
