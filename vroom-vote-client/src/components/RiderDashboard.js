@@ -31,9 +31,9 @@ class RiderDashboard extends React.Component {
            style={{ height: '100%'}}
            verticalAlign='middle'>
           <Grid.Column style={{ maxWidth: 850 }}>
-            <Grid>
+            <Grid columns={3}>
             <Grid.Column>
-              <Header as='h3' color='teal' textAlign='center'>Welcome, Rider {this.props.auth.username}</Header>
+              <Header as='h3' color='teal' textAlign='center'>Welcome, {this.props.auth.username}</Header>
               <p>Address: {this.props.auth.address}</p>
               <p>City/Town: {this.props.auth.locale}</p>
               <p>State: {this.props.auth._state}</p>
@@ -54,6 +54,7 @@ class RiderDashboard extends React.Component {
                   </Grid.Column>
                   <Grid.Column>
                     <Segment raised>
+                      <Header as="h3" color="teal">{this.props.auth.district}</Header>
                       <RiderMap />
                     </Segment>
                   </Grid.Column>

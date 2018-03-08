@@ -2,7 +2,7 @@ import React from 'react'
 import GoogleMapReact from 'google-map-react'
 import config from '../config'
 import HomeMarker from './HomeMarker'
-import Marker from './Marker'
+import DriverMarker from './DriverMarker'
 import { connect } from 'react-redux'
 
 
@@ -14,7 +14,7 @@ class RiderMap extends React.Component {
 
   render() {
     let myDriverMarkers = this.props.driversReducer.drivers.map(driver =>
-      <Marker
+      <DriverMarker
         lat={driver.latitude}
         lng={driver.longitude}
         key={driver.id}

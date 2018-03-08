@@ -5,7 +5,7 @@ const DriverItem = (props) => {
   return (
     <List>
       <List.Item>
-        <List.Icon name='users' />
+        <List.Icon name='user' />
         <List.Content>{props.username}</List.Content>
       </List.Item>
       <List.Item>

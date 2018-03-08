@@ -64,7 +64,7 @@ class SignUp extends React.Component {
             style={{ height: '100%' }}
             verticalAlign='middle'
           >
-            <Grid.Column style={{ maxWidth: 500 }}>
+            <Grid.Column style={{ maxWidth: 650 }}>
               <Header as='h2' color='teal' textAlign='center'>
               <Image src='/vv.png' />
               {' '}<span className="font1">VROOM</span><span className="font2">vote</span>
