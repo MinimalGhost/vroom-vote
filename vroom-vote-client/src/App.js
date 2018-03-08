@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import ReactDOM from 'react-dom'
-import { Route, Switch, withRouter, Link } from 'react-router-dom'
+import { Route, Switch, withRouter } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { logIn, logOut } from './actions'
@@ -36,16 +36,16 @@ class App extends Component {
     return (
       <div className="App">
         {this.props.auth.isLoggedIn ?
-          <div class="ui menu">
-            <div class="item">
+          <div className="ui menu">
+            <div className="item">
             <Header className='vroom' as='h2' color='teal' textAlign='center'>
               <Image src='/vv.png' />
               {' '}<span className="font1">VROOM</span><span className="font2">vote</span>
             </Header>
             </div>
-            <div class="right menu">
-              <div class="item">
-                 <div class="ui teal button" onClick={this.logout}>Log Out</div>
+            <div className="right menu">
+              <div className="item">
+                 <div className="ui teal button" onClick={this.logout}>Log Out</div>
               </div>
             </div>
           </div>

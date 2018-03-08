@@ -6,7 +6,7 @@ import { getDriverCarpool } from '../actions'
 import { bindActionCreators } from 'redux'
 import DriverMap from './DriverMap'
 import RiderList from './RiderList'
-import { Container, Button, Grid, Segment, Divider, Header } from 'semantic-ui-react'
+import { Image, Grid, Segment, Divider, Header } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 
 class DriverDashboard extends React.Component {
@@ -49,6 +49,27 @@ class DriverDashboard extends React.Component {
                   {this.props.auth.user.seats - this.props.auth.user.carpools[0].users.length + 1}
                 </Header>
                 <p>Seats left</p>
+              </Grid.Column>
+            </Grid>
+            <Divider />
+            <Grid columns={3}>
+              <Grid.Column>
+                <Header as='h3' color='teal' textAlign='center'>
+                  <Image src={this.props.auth.user.senator_1_img} />
+                  {' '}{this.props.auth.user.senator_1}
+                </Header>
+              </Grid.Column>
+              <Grid.Column>
+                <Header as='h3' color='teal' textAlign='center'>
+                  <Image src={this.props.auth.user.senator_2_img} />
+                  {' '}{this.props.auth.user.senator_2}
+                </Header>
+              </Grid.Column>
+              <Grid.Column>
+                <Header as='h3' color='teal' textAlign='center'>
+                  <Image src={this.props.auth.user.house_rep_img} />
+                  {' '}{this.props.auth.user.house_rep}
+                </Header>
               </Grid.Column>
             </Grid>
             <Divider />

@@ -37,6 +37,16 @@ class Api::V1::UsersController < ApplicationController
     obj = civicData['divisions'].values[2]
     user.district = obj.values[0]
 
+    # save senator and rep names/images
+    sen1 = civicData['officials'][2]
+    sen2 = civicData['officials'][3]
+    rep = civicData['officials'][4]
+    user.senator_1 = sen1.values[0]
+    user.senator_1_img = sen1.values[5]
+    user.senator_2 = sen2.values[0]
+    user.senator_2_img = sen2.values[5]
+    user.house_rep = rep.values[0]
+    user.house_rep_img = rep.values[5]
     # Current users district drivers
     drivers = User.where(district: user.district, is_driver: true, full: false)
 

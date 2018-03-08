@@ -1,5 +1,5 @@
 import React from 'react'
-import { List, Segment, Divider } from 'semantic-ui-react'
+import { List, Divider } from 'semantic-ui-react'
 
 const RiderItem = (props) => {
   return (

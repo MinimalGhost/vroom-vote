@@ -69,7 +69,7 @@ class SignUp extends React.Component {
               <Image src='/vv.png' />
               {' '}<span className="font1">VROOM</span><span className="font2">vote</span>
               </Header>
-              <Form class="ui form" size='medium' onSubmit={this.handleSignup}>
+              <Form className="ui form" size='large' onSubmit={this.handleSignup}>
                 <Segment>
                   <Grid columns={2} textAlign='left' relaxed>
                     <Grid.Column>
@@ -127,8 +127,7 @@ class SignUp extends React.Component {
                     <Grid columns={2} textAlign='left' relaxed>
                       <Grid.Column>
                         <label>State</label><br />
-                        <select class="ui fluid dropdown"
-                          fluid
+                        <select className="ui fluid dropdown"
                           name="_state"
                           onChange={this.handleInputChange}
                           value={this.state._state}
@@ -187,7 +186,7 @@ class SignUp extends React.Component {
                       </Grid.Column>
                       <Grid.Column>
                         <label>Profile Type</label><br />
-                        <select class="ui fluid dropdown"
+                        <select className="ui fluid dropdown"
                           name="is_driver"
                           onChange={this.handleProfileToggle}>
                           <option value='driver'>Driver</option>
