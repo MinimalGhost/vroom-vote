@@ -22,12 +22,9 @@ class Api::V1::UsersController < ApplicationController
     uState = user_params[:_state]
     uMaster = "#{uAddress}#{uLoc}#{uState}"
     geoResponse = RestClient.get("https://maps.googleapis.com/maps/api/geocode/json?address=#{uMaster}&key=#{ENV['GEOCODE_KEY']}")
-
     geoData = JSON.parse(geoResponse)
     user.latitude = geoData['results'][0]['geometry']['location']['lat']
     user.longitude = geoData['results'][0]['geometry']['location']['lng']
-    # user.latitude = geoData['geometry']['location'].values[0]
-    # user.longitude = geoData['geometry']['location'].values[1]
 
     #get district and add it to user
     userAddress = URI.encode(user_params[:address])
@@ -47,13 +44,14 @@ class Api::V1::UsersController < ApplicationController
     user.senator_2_img = sen2.values[5]
     user.house_rep = rep.values[0]
     user.house_rep_img = rep.values[5]
-    # Current users district drivers
+
+    # Get drivers in district of current user
     drivers = User.where(district: user.district, is_driver: true, full: false)
 
 
     if user.save
 
-      # if user is driver create a carpool and associate it
+      # if user is a driver create a carpool and associate it
       if user.is_driver
         carpool.driver_id = user.id
         carpool.save
@@ -76,6 +74,6 @@ class Api::V1::UsersController < ApplicationController
 
   private
     def user_params
-      params.permit(:username, :email, :address, :_state, :locale, :is_driver, :seats, :charity, :charity_url, :avatarPhoto, :password, :password_confirmation)
+      params.require(:user).permit(:username, :email, :address, :_state, :locale, :is_driver, :seats, :charity, :charity_url, :password, :password_confirmation)
     end
 end

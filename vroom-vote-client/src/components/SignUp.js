@@ -17,7 +17,6 @@ class SignUp extends React.Component {
     seats: '',
     charity: '',
     charity_url: '',
-    avatarPhoto: [],
     password: '',
     password_confirmation: ''
   }
