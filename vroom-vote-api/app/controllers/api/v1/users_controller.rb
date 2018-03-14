@@ -27,11 +27,15 @@ class Api::V1::UsersController < ApplicationController
     user.longitude = geoData['results'][0]['geometry']['location']['lng']
 
     #get district and add it to user
-    userAddress = URI.encode(user_params[:address])
-    userLocale = URI.encode(user_params[:locale])
-    response = RestClient.get("https://www.googleapis.com/civicinfo/v2/representatives?key=#{ENV['API_KEY']}&address=#{userAddress}#{userLocale}#{user_params[:_state]}")
+    userAddress = user_params[:address].gsub(' ','%20')
+    userLocale = user_params[:locale].gsub(' ','%20')
+
+    fullAddress = "#{userAddress}%20#{userLocale}%20#{user_params[:_state]}"
+    mystring = "https://www.googleapis.com/civicinfo/v2/representatives?key=#{ENV['API_KEY']}&address=#{fullAddress}"
+    response = RestClient.get("https://www.googleapis.com/civicinfo/v2/representatives?key=#{ENV['API_KEY']}&address=#{fullAddress}")
     civicData = JSON.parse(response)
     obj = civicData['divisions'].values[2]
+
     user.district = obj.values[0]
 
     # save senator and rep names/images
@@ -74,6 +78,6 @@ class Api::V1::UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:username, :email, :address, :_state, :locale, :is_driver, :seats, :charity, :charity_url, :password, :password_confirmation)
+      params.permit(:username, :email, :address, :_state, :locale, :is_driver, :seats, :charity, :charity_url, :password, :password_confirmation)
     end
 end
