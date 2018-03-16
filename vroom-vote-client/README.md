@@ -1,6 +1,6 @@
 # VROOMvote
 
-A platform for connecting people looking to volunteer as carpool drivers during the 2018 midterm elections with those who can't ordinarily make it to voting stations due to lack of transportation, disability, etc. Matches users by congressional district as either drivers or riders. Uses Google Civic Information, Maps and Geocoding API's. 
+A platform for connecting people looking to volunteer as carpool drivers during the 2018 midterm elections with those who can't ordinarily make it to voting stations due to lack of transportation, disability, etc. Matches users by congressional district as either drivers or riders. Uses Google Civic Information, Maps and Geocoding API's. Demo video can be found [here](https://youtu.be/s7pBIScO4w4)
 
 ## Intalling / Getting Started
 
