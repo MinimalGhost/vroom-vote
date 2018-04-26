@@ -7,6 +7,7 @@ import { connect } from 'react-redux'
 
 
 class RiderMap extends React.Component {
+
   static defaultProps = {
     center: {lat: 40.7215233, lng: -73.8604063},
     zoom: 13

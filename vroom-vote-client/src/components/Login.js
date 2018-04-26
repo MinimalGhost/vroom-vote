@@ -3,13 +3,13 @@ import AuthAdapter from '../adapters/AuthAdapter'
 import { Link, withRouter } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { logIn, logOut, getDistrictDrivers } from '../actions'
+import { logIn, logOut } from '../actions'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 
 
 class Login extends React.Component {
   state = {
-    username: '',
+    name: '',
     password: ''
   }
 
@@ -17,6 +17,7 @@ class Login extends React.Component {
     this.setState({
       [e.target.name]: e.target.value
     })
+    console.log(this.state.name)
   }
 
   handleLoginSubmit = (e) => {
@@ -63,10 +64,10 @@ class Login extends React.Component {
                     icon='user'
                     iconPosition='left'
                     placeholder='Full Name'
-                    type="text"
+                    type='text'
                     value={this.state.username}
                     onChange={this.handleInputChange}
-                    name="username"
+                    name='username'
                   />
                   <Form.Input
                     fluid
@@ -111,8 +112,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     logIn: logIn,
-    logOut: logOut,
-    getDistrictDrivers: getDistrictDrivers
+    logOut: logOut
   }, dispatch)
 }
 
