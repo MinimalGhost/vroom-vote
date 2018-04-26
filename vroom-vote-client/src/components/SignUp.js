@@ -3,7 +3,7 @@ import UserAdapter from '../adapters/UserAdapter'
 import { Link, withRouter } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { logIn, logOut, getDistrictDrivers } from '../actions'
+import { logIn, logOut } from '../actions'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 
 class SignUp extends React.Component {
@@ -304,8 +304,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     logIn: logIn,
-    logOut: logOut,
-    getDistrictDrivers: getDistrictDrivers
+    logOut: logOut
   }, dispatch)
 }
 
