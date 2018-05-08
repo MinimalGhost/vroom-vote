@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import ReactDOM from 'react-dom'
+import { Redirect } from 'react-router'
 import { Route, Switch, withRouter } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -50,7 +50,7 @@ class App extends Component {
             </div>
           </div>
 
- : null }
+ : <Redirect from="/" to="/login" /> }
         <Switch>
           <Route exact path='/login' component={Login} />
           <Route exact path='/signup' component={SignUp} />
