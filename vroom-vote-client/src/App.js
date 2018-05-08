@@ -50,7 +50,7 @@ class App extends Component {
             </div>
           </div>
 
- : <Redirect from="/" to="/login" /> }
+ : null }
         <Switch>
           <Route exact path='/login' component={Login} />
           <Route exact path='/signup' component={SignUp} />

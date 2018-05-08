@@ -121,7 +121,7 @@ class RiderDashboard extends React.Component {
                   <Grid.Column>
                     <Segment raised>
                       <Header as="h3" color="teal">{this.props.auth.district}</Header>
-                      <RiderMap />
+                      <RiderMap lat={this.props.auth.latitude} lng={this.props.auth.longitude} />
                     </Segment>
                   </Grid.Column>
                 </Grid>
@@ -133,7 +133,7 @@ class RiderDashboard extends React.Component {
                   <Grid.Column>
                     <Segment raised>
                       <Header as="h3" color="teal">{this.props.auth.district}</Header>
-                      <RiderMap />
+                      <RiderMap userLat={this.props.auth.latitude} userLng={this.props.auth.longitude} />
                     </Segment>
                   </Grid.Column>
                 </Grid>

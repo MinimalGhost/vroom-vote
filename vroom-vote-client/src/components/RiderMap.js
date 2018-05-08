@@ -8,12 +8,14 @@ import { connect } from 'react-redux'
 
 class RiderMap extends React.Component {
 
-  static defaultProps = {
-    center: {lat: 40.7215233, lng: -73.8604063},
-    zoom: 13
-  };
+  // static defaultProps = {
+  //   center: { lat: 40.7215233, lng: -73.8604063 },
+  //   zoom: 13
+  // };
 
   render() {
+    let userCenter = {lat: parseFloat(this.props.auth.latitude), lng: parseFloat(this.props.auth.longitude)}
+    let userZoom = 10
     let myDriverMarkers = this.props.driversReducer.drivers.map(driver =>
       <DriverMarker
         lat={driver.latitude}
@@ -21,12 +23,14 @@ class RiderMap extends React.Component {
         key={driver.id}
         driver={driver}
       />)
+
+
     return (
       <div className="google-map">
         <GoogleMapReact
         bootstrapURLKeys={{ key: `${config.MAPS_KEY}`}}
-        center={this.props.center}
-        zoom={this.props.zoom} >
+        center={userCenter}
+        zoom={userZoom} >
           <HomeMarker lat={this.props.auth.latitude} lng={this.props.auth.longitude} />
 
           {myDriverMarkers}
