@@ -6,7 +6,7 @@ import CarpoolAdapter from '../adapters/CarpoolAdapter'
 import { joinCarpool } from '../actions'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Image, Container, Button, Grid, Segment, Divider, Header, List } from 'semantic-ui-react'
+import { Image, Grid, Segment, Divider, Header, List } from 'semantic-ui-react'
 
 
 class RiderDashboard extends React.Component {
