@@ -64,7 +64,6 @@ class Login extends React.Component {
                     iconPosition='left'
                     placeholder='Full Name'
                     type='text'
-                    value={this.state.username}
                     onChange={this.handleInputChange}
                     name='username'
                   />
@@ -74,7 +73,6 @@ class Login extends React.Component {
                     iconPosition='left'
                     placeholder='Password'
                     type="password"
-                    value={this.state.password}
                     onChange={this.handleInputChange}
                     name="password"
                   />
