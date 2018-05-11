@@ -6,7 +6,6 @@ import { connect } from 'react-redux'
 class Profile extends React.Component {
 
   render() {
-    console.log(this.props.auth);
     return (
       <div>
         { !this.props.auth.isLoggedIn ?

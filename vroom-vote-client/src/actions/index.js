@@ -1,7 +1,6 @@
 import config from '../config'
 
 export function logIn(user) {
-  console.log(user);
   return { type: 'LOG_IN', ...user }
 }
 

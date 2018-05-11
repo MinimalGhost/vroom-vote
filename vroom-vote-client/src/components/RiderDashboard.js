@@ -12,7 +12,6 @@ import { Image, Grid, Segment, Divider, Header, List } from 'semantic-ui-react'
 class RiderDashboard extends React.Component {
 
   selectDriver = (e, driver) => {
-    console.log(driver.id);
     CarpoolAdapter.joinCarpool(driver.id)
     .then(this.props.joinCarpool)
   }

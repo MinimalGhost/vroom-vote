@@ -7,7 +7,6 @@ export default (state = {
 }, action) => {
   switch(action.type) {
     case 'LOG_IN':
-    console.log('ACTION DOT USER MANG', action.user);
       return { ...state, isLoggedIn: true, user: action.user }
     case 'LOG_OUT':
       return { ...state, isLoggedIn: false, user: {}}
