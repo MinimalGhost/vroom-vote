@@ -7,7 +7,11 @@ const DriverList = (props) => {
 
     return (
       <div>
-        <h4>Here are available drivers in your district</h4>
+        {districtDrivers.length > 0 ?
+          <h4>Here are available drivers in your district</h4>
+        :
+          <h4>There are currently no available drivers in your district</h4>
+        }
         {districtDrivers}
       </div>
     )
