@@ -14,7 +14,7 @@ import registerServiceWorker from './registerServiceWorker';
 //
 // const store = createStore(rootReducer, applyMiddleware(thunk))
 
-// console.log('Redux store state: ', store.getState());
+console.log('Redux store state: ', store.getState());
 
 ReactDOM.render((
   <Provider store={store}>
