@@ -36,6 +36,7 @@ class Api::V1::UsersController < ApplicationController
     user.district = obj.values[0]
 
     # save senator and rep names/images
+    # TODO_ generate migration for politician table
     sen1 = civicData['officials'][2]
     sen2 = civicData['officials'][3]
     rep = civicData['officials'][4]
