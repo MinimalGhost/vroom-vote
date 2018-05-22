@@ -9,9 +9,6 @@ class Api::V1::UsersController < ApplicationController
     # otherwise send back drivers in district
   end
 
-  # google maps api = ENV['MAPS_KEY']
-  # google geocode api = ENV['GEOCODE_KEY']
-
   def create
     user = User.new(user_params)
     carpool = Carpool.new()
